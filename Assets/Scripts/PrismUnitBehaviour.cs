@@ -26,6 +26,9 @@ public class PrismUnitBehaviour : MonoBehaviour
         timeLastAttack = float.NegativeInfinity;
         timeLastLaser = float.NegativeInfinity;
         speed = navMeshAgent.speed;
+        
+        // Expose speed for animations
+        speed = navMeshAgent.speed;
     }
         
     private void Update()
@@ -46,8 +49,7 @@ public class PrismUnitBehaviour : MonoBehaviour
             MoveUnitsTowardsMouseRay();
         }
 
-        // Expose speed for animations
-        speed = navMeshAgent.speed;
+
     }
     
     public void Hit()
