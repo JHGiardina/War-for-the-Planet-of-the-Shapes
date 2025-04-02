@@ -1,30 +1,34 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+// Basic implementations so the user only needs to implement the hit method
+
 public abstract class BaseHumanBehaviour : MonoBehaviour
 {
-    public float AttackRange = 2;
-    public float AttackDamage = 10;
     public float Health = 100;
-    public float attackCooldown = 2;
+    public GameObject DeathExplosion;
     [HideInInspector] public float speed;
-    
-    [SerializeField] GameObject DeathExplosion;
 
-    private NavMeshAgent navMeshAgent;
-    private GameObject prismTarget;
-    private float timeLastAttack;
+    protected NavMeshAgent navMeshAgent;
+    protected GameObject prismTarget;
+    protected float timeLastAttack;
 
     private string PRISM_TAG = "Prism";
 
-    private void Start()
+    // Just implement this to create your unit
+    public abstract void Hit();
+
+    // overridable parameters
+    public float baseSpeed = 1;
+
+    public virtual void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.SetDestination(Vector3.zero);
         timeLastAttack = float.NegativeInfinity;
 
         // Expose speed for animations
-        speed = navMeshAgent.speed;
+        speed = navMeshAgent.velocity.magnitude;
     }
 
     private void Update()
@@ -43,29 +47,7 @@ public abstract class BaseHumanBehaviour : MonoBehaviour
         }
     }
 
-    public void Hit()
-    {
-        // Check if we can attack or on cooldown
-        float timeSinceLastAttack = Time.time - timeLastAttack;
-        if(timeSinceLastAttack < attackCooldown) return;
-
-        // Hit the first prism within a certain radius
-        Collider[] hits = Physics.OverlapSphere(transform.position, AttackRange);
-        foreach(Collider hit in hits)
-        {
-            //Debug.Log(hit);
-            PrismUnitBehaviour prism;
-            Debug.Log(hit.gameObject);
-            if(hit.gameObject.TryGetComponent<PrismUnitBehaviour>(out prism))
-            {
-                Debug.Log(hit.gameObject);
-                prism.OnHit(AttackDamage);
-                break;
-            }
-        }
-    }
-
-    public  void OnHit(float damage)
+    public void OnHit(float damage)
     {
         Debug.Log("Human Health" + Health);
         Health -= damage;
