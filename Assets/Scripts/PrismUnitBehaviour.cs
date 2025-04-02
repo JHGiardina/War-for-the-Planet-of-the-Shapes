@@ -7,7 +7,7 @@ public class PrismUnitBehaviour : MonoBehaviour
     public float AttackDamage = 50;
     public float Health = 100;
     public float attackCooldown = 2;
-    public float laserVisibilityTime = 0.1f;
+    public float laserVisibilityTime = 0.5f;
 
     private NavMeshAgent navMeshAgent;
     private float timeLastAttack;
@@ -60,8 +60,6 @@ public class PrismUnitBehaviour : MonoBehaviour
     public void OnHit(float damage)
     {
         Health -= damage;
-        Debug.Log("hit");
-        Debug.Log(Health);
         if(Health <= 0)
         {
             Destroy(gameObject);

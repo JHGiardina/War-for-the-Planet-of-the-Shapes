@@ -124,10 +124,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fd9792b3b18e73448790019750b1537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackRange: 30
+  AttackRange: 15
   AttackDamage: 10
   Health: 100
   attackCooldown: 2
+  laserVisibilityTime: 0.1
 --- !u!65 &-2068787347382524771
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -173,7 +174,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 5b973bd3b69993143a9e2c3e90a5f030, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

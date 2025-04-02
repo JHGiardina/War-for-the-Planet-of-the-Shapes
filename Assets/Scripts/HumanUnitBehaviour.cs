@@ -15,7 +15,7 @@ public class HumanUnitBehaviour : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.SetDestination(Vector3.zero);
-        timeLastAttack = Time.time;
+        timeLastAttack = float.NegativeInfinity;
     }
 
     private void Update()
