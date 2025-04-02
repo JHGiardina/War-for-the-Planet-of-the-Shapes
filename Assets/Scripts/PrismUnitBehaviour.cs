@@ -86,7 +86,8 @@ public class PrismUnitBehaviour : MonoBehaviour
     {
         timeLastLaser = Time.time;
         laser.enabled = true;
-        laser.SetPosition(0, transform.position);
+        Vector3 laserBeginPosition = transform.position;
+        laser.SetPosition(0, laserBeginPosition);
         laser.SetPosition(1, target);
     }
 
