@@ -38,6 +38,8 @@ public class PrismUnitBehaviour : MonoBehaviour
     
     public void Hit()
     {
+        // This is super ugly lots of nest ifs, but I'm going fast. I can refactor later
+
         // Check if we can attack or on cooldown
         float timeSinceLastAttack = Time.time - timeLastAttack;
         if(timeSinceLastAttack < attackCooldown) return;
@@ -46,13 +48,22 @@ public class PrismUnitBehaviour : MonoBehaviour
         Collider[] hits = Physics.OverlapSphere(transform.position, AttackRange);
         foreach(Collider hit in hits)
         {
-            HumanUnitBehaviour human;
-            if(hit.gameObject.TryGetComponent<HumanUnitBehaviour>(out human))
+            // Is the collider from a human?
+            if(hit.gameObject.TryGetComponent<HumanUnitBehaviour>(out HumanUnitBehaviour human))
             {
-                DrawLaser(human.transform.position);
-                timeLastAttack = Time.time;
-                human.OnHit(AttackDamage);
-                break;
+                // Can we actually hit that human from our position by drawing a straight line?
+                if(Physics.Linecast(transform.position, human.transform.position, out RaycastHit lineHit))
+                {
+                    // Is what we got from ray casting the straight line the human target or a wall?
+                    if(lineHit.collider.gameObject == human.gameObject)
+                    {
+                        // Shoot Laser Logic
+                        DrawLaser(human.transform.position);
+                        timeLastAttack = Time.time;
+                        human.OnHit(AttackDamage);
+                        break;
+                    }
+                }
             }
         }
     }

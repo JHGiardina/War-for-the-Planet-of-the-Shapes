@@ -52,7 +52,8 @@ public class HumanUnitBehaviour : MonoBehaviour
         Health -= damage;
         if(Health <= 0)
         {
-            Instantiate(DeathExplosion, gameObject.transform.position, Quaternion.identity);
+            var explosionVfx = Instantiate(DeathExplosion, gameObject.transform.position, Quaternion.identity);
+            Destroy(explosionVfx, 3);
             Destroy(gameObject);
         }
     }
