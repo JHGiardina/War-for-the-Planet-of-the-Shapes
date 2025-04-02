@@ -8,6 +8,7 @@ public class PrismUnitBehaviour : MonoBehaviour
     public float Health = 100;
     public float attackCooldown = 2;
     public float laserVisibilityTime = 0.5f;
+    [HideInInspector] public float speed;
 
     [SerializeField] GameObject DeathExplosion;
     [SerializeField] GameObject WayPointObject;
@@ -24,6 +25,7 @@ public class PrismUnitBehaviour : MonoBehaviour
         laser = GetComponent<LineRenderer>();
         timeLastAttack = float.NegativeInfinity;
         timeLastLaser = float.NegativeInfinity;
+        speed = navMeshAgent.speed;
     }
         
     private void Update()
@@ -43,6 +45,9 @@ public class PrismUnitBehaviour : MonoBehaviour
         {
             MoveUnitsTowardsMouseRay();
         }
+
+        // Expose speed for animations
+        speed = navMeshAgent.speed;
     }
     
     public void Hit()
@@ -72,9 +77,6 @@ public class PrismUnitBehaviour : MonoBehaviour
                         timeLastAttack = Time.time;
                         human.OnHit(AttackDamage);
                         break;
-                    }
-                    else{
-                        Debug.Log("false");
                     }
                 }
             }

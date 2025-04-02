@@ -7,6 +7,7 @@ public class HumanUnitBehaviour : MonoBehaviour
     public float AttackDamage = 10;
     public float Health = 100;
     public float attackCooldown = 2;
+    public float speed;
     
     [SerializeField] GameObject DeathExplosion;
 
@@ -28,7 +29,7 @@ public class HumanUnitBehaviour : MonoBehaviour
         // Try a hit within our range (will go through walls but the range is so small this is intended)
         Hit();
 
-         // Get a human target if we don't have one else move towards human target
+         // Get a human target if we don't have one or its dead else move towards human target
         if(prismTarget == null)
         {
             FindPrismTarget();
@@ -37,6 +38,9 @@ public class HumanUnitBehaviour : MonoBehaviour
         {
             navMeshAgent.SetDestination(prismTarget.transform.position);
         }
+
+        // Expose speed for animations
+        speed = navMeshAgent.speed;
     }
 
     public void Hit()
