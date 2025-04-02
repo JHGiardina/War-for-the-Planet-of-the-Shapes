@@ -29,19 +29,19 @@ public class CameraBehavior : MonoBehaviour
         }
 
         // Spawn Units
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            Spawn();
+            SpawnAtRayHit();
         }
     }
 
-    private void Spawn()
+    private void SpawnAtRayHit()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
             Vector3 spawnLocation = hit.point;
-            Instantiate(SpawnUnit, spawnLocation, Quaternion.identity);
+            Instantiate(SpawnUnit, spawnLocation, SpawnUnit.transform.rotation);
             Debug.Log(hit.point);
         }
     }

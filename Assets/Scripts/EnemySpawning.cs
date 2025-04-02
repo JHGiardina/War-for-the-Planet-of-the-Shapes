@@ -3,10 +3,10 @@ using System.Collections;
 
 public class WaveManager : MonoBehaviour
 {
-    public GameObject enemy;
-    public Transform[] spawnPoints;
-    public float timeBetweenWaves = 5f;
-    public int enemiesPerWave = 5;
+    public GameObject Enemy;
+    public Transform[] SpawnPoints;
+    public float TimeBetweenWaves = 5f;
+    public int EnemiesPerWave = 5;
 
     private float countdown = 0f;
     private int waveNumber = 0;
@@ -16,7 +16,7 @@ public class WaveManager : MonoBehaviour
         if (countdown <= 0f)
         {
             StartCoroutine(SpawnWave());
-            countdown = timeBetweenWaves;
+            countdown = TimeBetweenWaves;
         }
         countdown -= Time.deltaTime;
     }
@@ -25,7 +25,7 @@ public class WaveManager : MonoBehaviour
     {
         waveNumber++;
 
-        for (int i = 0; i < enemiesPerWave; i++)
+        for (int i = 0; i < EnemiesPerWave; i++)
         {
             SpawnEnemy();
             yield return new WaitForSeconds(0f);
@@ -34,7 +34,8 @@ public class WaveManager : MonoBehaviour
 
     void SpawnEnemy()
     {
-        int index = Random.Range(0, spawnPoints.Length);
-        Instantiate(enemy, spawnPoints[index].position, spawnPoints[index].rotation);
+        int index = Random.Range(0, SpawnPoints.Length);
+        Instantiate(Enemy, SpawnPoints[index].position, SpawnPoints[index].rotation);
+        Debug.Log("Spawn");
     }
 }
