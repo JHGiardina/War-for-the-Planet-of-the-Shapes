@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8656750722259721097}
   - component: {fileID: 6771629790995849722}
   m_Layer: 0
-  m_Name: Triangle Explosion
+  m_Name: Prism Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

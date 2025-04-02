@@ -13,6 +13,7 @@ public class PrismUnitBehaviour : MonoBehaviour
     private float timeLastAttack;
     private float timeLastLaser;
     private LineRenderer laser;
+    private GameObject humanTarget;
 
     private void Start()
     {
@@ -82,7 +83,12 @@ public class PrismUnitBehaviour : MonoBehaviour
         }
     }
 
-    public void DrawLaser(Vector3 target)
+    public void FindHumanTarget()
+    {
+        //GetObj
+    }
+
+    private void DrawLaser(Vector3 target)
     {
         timeLastLaser = Time.time;
         laser.enabled = true;

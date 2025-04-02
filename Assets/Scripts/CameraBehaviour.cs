@@ -11,6 +11,7 @@ public class CameraBehavior : MonoBehaviour
     void Start()
     {
         orbitCenter = Vector3.zero;
+        // Rotate around y-axis
         orbitAxis = new Vector3(0, 1, 0);
         rotationSpeed = 1000;
         zoomSpeed = 30;
