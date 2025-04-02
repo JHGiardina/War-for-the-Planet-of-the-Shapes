@@ -36,6 +36,5 @@ public class WaveManager : MonoBehaviour
     {
         int index = Random.Range(0, SpawnPoints.Length);
         Instantiate(Enemy, SpawnPoints[index].position, SpawnPoints[index].rotation);
-        Debug.Log("Spawn");
     }
 }

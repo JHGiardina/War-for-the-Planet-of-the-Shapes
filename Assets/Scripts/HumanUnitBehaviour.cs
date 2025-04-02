@@ -1,14 +1,13 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PrismUnitBehaviour : MonoBehaviour
+public class HumanUnitBehaviour : MonoBehaviour
 {
-    public float AttackRange = 30;
+    public float AttackRange = 2;
     public float AttackDamage = 10;
     public float Health = 100;
     public float attackCooldown = 2;
 
-    private LineRenderer laser;
     private NavMeshAgent navMeshAgent;
     private float timeLastAttack;
 
@@ -16,31 +15,31 @@ public class PrismUnitBehaviour : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.SetDestination(Vector3.zero);
-        laser = GetComponent<LineRenderer>();
         timeLastAttack = Time.time;
     }
-        
+
     private void Update()
     {
         Hit();
     }
-    
+
     public void Hit()
     {
         // Check if we can attack or on cooldown
         float timeSinceLastAttack = Time.time - timeLastAttack;
         if(timeSinceLastAttack < attackCooldown) return;
 
-        // Hit the first human within a certain radius
+        // Hit the first prism within a certain radius
         Collider[] hits = Physics.OverlapSphere(transform.position, AttackRange);
         foreach(Collider hit in hits)
         {
-            HumanUnitBehaviour human;
-            if(hit.gameObject.TryGetComponent<HumanUnitBehaviour>(out human))
+            //Debug.Log(hit);
+            PrismUnitBehaviour prism;
+            Debug.Log(hit.gameObject);
+            if(hit.gameObject.TryGetComponent<PrismUnitBehaviour>(out prism))
             {
-                timeLastAttack = Time.time;
-                DrawLaser(human.transform.position);
-                human.OnHit(AttackDamage);
+                Debug.Log(hit.gameObject);
+                prism.OnHit(AttackDamage);
                 break;
             }
         }
@@ -49,17 +48,9 @@ public class PrismUnitBehaviour : MonoBehaviour
     public void OnHit(float damage)
     {
         Health -= damage;
-        Debug.Log("hit");
-        Debug.Log(Health);
         if(Health <= 0)
         {
             Destroy(gameObject);
         }
-    }
-
-    private void DrawLaser(Vector3 target)
-    {
-        laser.SetPosition(0, transform.position);
-        laser.SetPosition(1, target);
     }
 }

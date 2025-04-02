@@ -42,7 +42,6 @@ public class CameraBehavior : MonoBehaviour
         {
             Vector3 spawnLocation = hit.point;
             Instantiate(SpawnUnit, spawnLocation, SpawnUnit.transform.rotation);
-            Debug.Log(hit.point);
         }
     }
 }
