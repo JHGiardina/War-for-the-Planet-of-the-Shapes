@@ -2,33 +2,47 @@ using UnityEngine;
 
 public class CameraBehavior : MonoBehaviour
 {
-    private Vector3 target;
+    public GameObject SpawnUnit;
+    private Vector3 orbitCenter;
+    private Vector3 orbitAxis;
+    private float rotationSpeed;
+    private float zoomSpeed;
 
     void Start()
     {
-        // Don't move the camera anywhere on start
-        target = transform.position;
+        orbitCenter = Vector3.zero;
+        orbitAxis = new Vector3(0, 1, 0);
+        rotationSpeed = 1000;
+        zoomSpeed = 30;
     }
 
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target, 100);
-    }
+        // Zoom
+        Vector3 cameraToOrign = orbitCenter - Camera.main.transform.position;
+        Camera.main.transform.position += zoomSpeed * cameraToOrign * Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime;
 
-    void LateUpdate()
-    {
-        // Yes I could use input actions but this works for now
-        if(Input.GetMouseButtonDown(0))
+        // Rotation around World Origin
+        if (Input.GetMouseButton(1))
         {
-            target = GetMouseTargetPosition();
+            Camera.main.transform.RotateAround(orbitCenter, orbitAxis, rotationSpeed *  Input.GetAxis("Mouse X") * Time.deltaTime);
+        }
+
+        // Spawn Units
+        if (Input.GetMouseButton(0))
+        {
+            Spawn();
         }
     }
 
-    private Vector3 GetMouseTargetPosition()
+    private void Spawn()
     {
-        //https://stackoverflow.com/questions/72975015/how-do-i-get-mouse-world-position-x-y-plane-only-in-unity
-        Vector3 target = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
-        target = new Vector3(target.x, transform.position.y, target.z);
-        return target;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            Vector3 spawnLocation = hit.point;
+            Instantiate(SpawnUnit, spawnLocation, Quaternion.identity);
+            Debug.Log(hit.point);
+        }
     }
 }
