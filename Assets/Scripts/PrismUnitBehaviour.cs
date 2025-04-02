@@ -54,6 +54,7 @@ public class PrismUnitBehaviour : MonoBehaviour
                 // Can we actually hit that human from our position by drawing a straight line?
                 if(Physics.Linecast(transform.position, human.transform.position, out RaycastHit lineHit))
                 {
+                    Debug.Log(lineHit.collider.gameObject);
                     // Is what we got from ray casting the straight line the human target or a wall?
                     if(lineHit.collider.gameObject == human.gameObject)
                     {
@@ -63,6 +64,9 @@ public class PrismUnitBehaviour : MonoBehaviour
                         human.OnHit(AttackDamage);
                         break;
                     }
+                    else{
+                        Debug.Log("false");
+                    }
                 }
             }
         }
@@ -70,6 +74,7 @@ public class PrismUnitBehaviour : MonoBehaviour
 
     public void OnHit(float damage)
     {
+        Debug.Log("Prism Health" + Health);
         Health -= damage;
         if(Health <= 0)
         {

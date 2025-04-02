@@ -49,10 +49,11 @@ public class HumanUnitBehaviour : MonoBehaviour
 
     public void OnHit(float damage)
     {
+        Debug.Log("Human Health" + Health);
         Health -= damage;
         if(Health <= 0)
         {
-            var explosionVfx = Instantiate(DeathExplosion, gameObject.transform.position, Quaternion.identity);
+            var explosionVfx = Instantiate(DeathExplosion, transform.position, Quaternion.identity);
             Destroy(explosionVfx, 3);
             Destroy(gameObject);
         }
