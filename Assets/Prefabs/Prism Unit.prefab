@@ -99,7 +99,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 873835107319111430}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.36969
+  m_Radius: 0.2
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -129,6 +129,7 @@ MonoBehaviour:
   Health: 100
   attackCooldown: 2
   laserVisibilityTime: 0.15
+  DeathExplosion: {fileID: 6077638792615033397, guid: 1682634f0c8f3be459774a9e90f64dd9, type: 3}
 --- !u!65 &-2068787347382524771
 BoxCollider:
   m_ObjectHideFlags: 0

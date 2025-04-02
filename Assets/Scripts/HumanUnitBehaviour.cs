@@ -14,7 +14,7 @@ public class HumanUnitBehaviour : MonoBehaviour
     private GameObject prismTarget;
     private float timeLastAttack;
 
-    private string PRISM_TAG = "Human";
+    private string PRISM_TAG = "Prism";
 
     private void Start()
     {

@@ -9,6 +9,8 @@ public class PrismUnitBehaviour : MonoBehaviour
     public float attackCooldown = 2;
     public float laserVisibilityTime = 0.5f;
 
+    [SerializeField] GameObject DeathExplosion;
+
     private NavMeshAgent navMeshAgent;
     private float timeLastAttack;
     private float timeLastLaser;
@@ -90,6 +92,8 @@ public class PrismUnitBehaviour : MonoBehaviour
         Health -= damage;
         if(Health <= 0)
         {
+            var explosionVfx = Instantiate(DeathExplosion, transform.position, Quaternion.identity);
+            Destroy(explosionVfx, 3);
             Destroy(gameObject);
         }
     }
