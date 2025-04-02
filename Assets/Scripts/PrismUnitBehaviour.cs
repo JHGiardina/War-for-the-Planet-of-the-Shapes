@@ -4,25 +4,36 @@ using UnityEngine.AI;
 public class PrismUnitBehaviour : MonoBehaviour
 {
     public float AttackRange = 30;
-    public float AttackDamage = 10;
+    public float AttackDamage = 50;
     public float Health = 100;
     public float attackCooldown = 2;
+    public float laserVisibilityTime = 0.1f;
 
-    private LineRenderer laser;
     private NavMeshAgent navMeshAgent;
     private float timeLastAttack;
+    private float timeLastLaser;
+    private LineRenderer laser;
 
     private void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.SetDestination(Vector3.zero);
         laser = GetComponent<LineRenderer>();
-        timeLastAttack = Time.time;
+        timeLastAttack = float.NegativeInfinity;
+        timeLastLaser = float.NegativeInfinity;
     }
         
     private void Update()
     {
+        // Attempt to hit by checking if enemy is in range
         Hit();
+
+        // Remove any old lasers
+        float timeSinceLastLaser = Time.time - timeLastLaser;
+        if(laser.enabled && (timeSinceLastLaser >= laserVisibilityTime))
+        {
+            laser.enabled = false;
+        }
     }
     
     public void Hit()
@@ -38,8 +49,8 @@ public class PrismUnitBehaviour : MonoBehaviour
             HumanUnitBehaviour human;
             if(hit.gameObject.TryGetComponent<HumanUnitBehaviour>(out human))
             {
-                timeLastAttack = Time.time;
                 DrawLaser(human.transform.position);
+                timeLastAttack = Time.time;
                 human.OnHit(AttackDamage);
                 break;
             }
@@ -57,9 +68,12 @@ public class PrismUnitBehaviour : MonoBehaviour
         }
     }
 
-    private void DrawLaser(Vector3 target)
+    public void DrawLaser(Vector3 target)
     {
+        timeLastLaser = Time.time;
+        laser.enabled = true;
         laser.SetPosition(0, transform.position);
         laser.SetPosition(1, target);
     }
+
 }
