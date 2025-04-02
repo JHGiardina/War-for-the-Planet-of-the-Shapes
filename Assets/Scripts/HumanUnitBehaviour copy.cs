@@ -15,6 +15,8 @@ public class HumanUnitBehaviour : MonoBehaviour
     private GameObject prismTarget;
     private float timeLastAttack;
 
+    public Animator animator;
+
     private string PRISM_TAG = "Prism";
 
     private void Start()
@@ -22,6 +24,10 @@ public class HumanUnitBehaviour : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.SetDestination(Vector3.zero);
         timeLastAttack = float.NegativeInfinity;
+        if(animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
     }
 
     private void Update()
@@ -40,7 +46,12 @@ public class HumanUnitBehaviour : MonoBehaviour
         }
 
         // Expose speed for animations
-        speed = navMeshAgent.speed;
+        speed = navMeshAgent.velocity.magnitude;
+
+        if(speed >= 0)
+        {
+            animator.SetBool("Run", true);
+        }
     }
 
     public void Hit()
