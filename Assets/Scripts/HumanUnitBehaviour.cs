@@ -7,6 +7,8 @@ public class HumanUnitBehaviour : MonoBehaviour
     public float AttackDamage = 10;
     public float Health = 100;
     public float attackCooldown = 2;
+    
+    [SerializeField] GameObject DeathExplosion;
 
     private NavMeshAgent navMeshAgent;
     private float timeLastAttack;
@@ -50,6 +52,7 @@ public class HumanUnitBehaviour : MonoBehaviour
         Health -= damage;
         if(Health <= 0)
         {
+            Instantiate(DeathExplosion, gameObject.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

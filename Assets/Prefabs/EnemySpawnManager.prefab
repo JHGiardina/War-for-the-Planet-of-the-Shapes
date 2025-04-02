@@ -48,5 +48,5 @@ MonoBehaviour:
   SpawnPoints:
   - {fileID: 0}
   - {fileID: 0}
-  TimeBetweenWaves: 5
-  EnemiesPerWave: 5
+  TimeBetweenWaves: 15
+  EnemiesPerWave: 2

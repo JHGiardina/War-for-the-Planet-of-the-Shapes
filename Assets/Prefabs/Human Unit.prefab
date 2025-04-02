@@ -1826,6 +1826,7 @@ MonoBehaviour:
   AttackDamage: 10
   Health: 100
   attackCooldown: 2
+  DeathExplosion: {fileID: 6077638792615033397, guid: b4f1aff922dcf3c4f83269128af8fad0, type: 3}
 --- !u!136 &-4082132774765783661
 CapsuleCollider:
   m_ObjectHideFlags: 0
