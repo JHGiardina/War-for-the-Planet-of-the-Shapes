@@ -11,7 +11,10 @@ public class HumanUnitBehaviour : MonoBehaviour
     [SerializeField] GameObject DeathExplosion;
 
     private NavMeshAgent navMeshAgent;
+    private GameObject prismTarget;
     private float timeLastAttack;
+
+    private string PRISM_TAG = "Human";
 
     private void Start()
     {
@@ -22,7 +25,18 @@ public class HumanUnitBehaviour : MonoBehaviour
 
     private void Update()
     {
+        // Try a hit within our range (will go through walls but the range is so small this is intended)
         Hit();
+
+         // Get a human target if we don't have one else move towards human target
+        if(prismTarget == null)
+        {
+            FindPrismTarget();
+        }
+        else
+        {
+            navMeshAgent.SetDestination(prismTarget.transform.position);
+        }
     }
 
     public void Hit()
@@ -56,6 +70,18 @@ public class HumanUnitBehaviour : MonoBehaviour
             var explosionVfx = Instantiate(DeathExplosion, transform.position, Quaternion.identity);
             Destroy(explosionVfx, 3);
             Destroy(gameObject);
+        }
+    }
+
+    // Set target to be a random human
+    public void FindPrismTarget()
+    {
+        GameObject[] prisms = GameObject.FindGameObjectsWithTag(PRISM_TAG);
+
+        if(prisms.Length > 0)
+        {
+            int randomIndex = Random.Range(0, prisms.Length);
+            prismTarget = prisms[randomIndex];
         }
     }
 }

@@ -15,10 +15,11 @@ public class PrismUnitBehaviour : MonoBehaviour
     private LineRenderer laser;
     private GameObject humanTarget;
 
+    private string HUMAN_TAG = "Human";
+
     private void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        navMeshAgent.SetDestination(Vector3.zero);
         laser = GetComponent<LineRenderer>();
         timeLastAttack = float.NegativeInfinity;
         timeLastLaser = float.NegativeInfinity;
@@ -34,6 +35,16 @@ public class PrismUnitBehaviour : MonoBehaviour
         if(laser.enabled && (timeSinceLastLaser >= laserVisibilityTime))
         {
             laser.enabled = false;
+        }
+
+        // Get a human target if we don't have one else move towards human target
+        if(humanTarget == null)
+        {
+            FindHumanTarget();
+        }
+        else
+        {
+            navMeshAgent.SetDestination(humanTarget.transform.position);
         }
     }
     
@@ -83,9 +94,16 @@ public class PrismUnitBehaviour : MonoBehaviour
         }
     }
 
+    // Set target to be a random human
     public void FindHumanTarget()
     {
-        //GetObj
+        GameObject[] humans = GameObject.FindGameObjectsWithTag(HUMAN_TAG);
+
+        if(humans.Length > 0)
+        {
+            int randomIndex = Random.Range(0, humans.Length);
+            humanTarget = humans[randomIndex];
+        }
     }
 
     private void DrawLaser(Vector3 target)
