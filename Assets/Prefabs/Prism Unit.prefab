@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackRange: 15
-  AttackDamage: 10
+  AttackDamage: 35
   Health: 100
   attackCooldown: 2
   laserVisibilityTime: 0.15
