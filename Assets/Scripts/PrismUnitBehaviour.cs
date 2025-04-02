@@ -10,14 +10,13 @@ public class PrismUnitBehaviour : MonoBehaviour
     public float laserVisibilityTime = 0.5f;
 
     [SerializeField] GameObject DeathExplosion;
+    [SerializeField] GameObject WayPointObject;
 
     private NavMeshAgent navMeshAgent;
     private float timeLastAttack;
     private float timeLastLaser;
     private LineRenderer laser;
-    private GameObject humanTarget;
-
-    private string HUMAN_TAG = "Human";
+    private Vector3 targetPosition;
 
     private void Start()
     {
@@ -39,14 +38,10 @@ public class PrismUnitBehaviour : MonoBehaviour
             laser.enabled = false;
         }
 
-        // Get a human target if we don't have one else move towards human target
-        if(humanTarget == null)
+        // Move Units towards mouse when 
+        if (Input.GetMouseButtonDown(1))
         {
-            FindHumanTarget();
-        }
-        else
-        {
-            navMeshAgent.SetDestination(humanTarget.transform.position);
+            MoveUnitsTowardsMouseRay();
         }
     }
     
@@ -93,20 +88,25 @@ public class PrismUnitBehaviour : MonoBehaviour
         if(Health <= 0)
         {
             var explosionVfx = Instantiate(DeathExplosion, transform.position, Quaternion.identity);
-            Destroy(explosionVfx, 3);
+            Destroy(explosionVfx, 1);
             Destroy(gameObject);
         }
     }
 
-    // Set target to be a random human
-    public void FindHumanTarget()
+    private void MoveUnitsTowardsMouseRay()
     {
-        GameObject[] humans = GameObject.FindGameObjectsWithTag(HUMAN_TAG);
-
-        if(humans.Length > 0)
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            int randomIndex = Random.Range(0, humans.Length);
-            humanTarget = humans[randomIndex];
+            targetPosition = hit.point;
+
+            //Spawn waypoint marker 
+            // 3d pivot is placed wrong so I have to translate it up when spawning (I'll fix it in blender later)
+            Vector3 waypointPosition = targetPosition + new Vector3(0, 4, 0);
+            var waypointObject = Instantiate(WayPointObject, waypointPosition, Quaternion.identity);
+            Destroy(waypointObject, 3);
+            
+            navMeshAgent.SetDestination(targetPosition);
         }
     }
 

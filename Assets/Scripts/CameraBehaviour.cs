@@ -19,12 +19,14 @@ public class CameraBehavior : MonoBehaviour
 
     void Update()
     {
+        // I could use input actions instead of Unity's old input system, but someone else can pick up that task
+
         // Zoom
         Vector3 cameraToOrign = orbitCenter - Camera.main.transform.position;
         Camera.main.transform.position += zoomSpeed * cameraToOrign * Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime;
 
         // Rotation around World Origin
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(2))
         {
             Camera.main.transform.RotateAround(orbitCenter, orbitAxis, rotationSpeed *  Input.GetAxis("Mouse X") * Time.deltaTime);
         }
