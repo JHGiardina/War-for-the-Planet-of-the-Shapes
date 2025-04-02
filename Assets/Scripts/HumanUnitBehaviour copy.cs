@@ -7,7 +7,7 @@ public class HumanUnitBehaviour : MonoBehaviour
     public float AttackDamage = 10;
     public float Health = 100;
     public float attackCooldown = 2;
-    public float speed;
+    [HideInInspector] public float speed;
     
     [SerializeField] GameObject DeathExplosion;
 
