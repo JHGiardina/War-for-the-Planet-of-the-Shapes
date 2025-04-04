@@ -109,6 +109,13 @@ public class PrismUnitBehaviour : MonoBehaviour
         {
             targetPosition = hit.point;
 
+            // Destroy previous waypoints
+            WaypointBehaviour[] previousWayPoints = Object.FindObjectsByType<WaypointBehaviour>(FindObjectsSortMode.None);
+            foreach(WaypointBehaviour previousWayPoint in previousWayPoints)
+            {
+                Destroy(previousWayPoint.gameObject);
+            }
+
             //Spawn waypoint marker 
             // 3d pivot is placed wrong so I have to translate it up when spawning (I'll fix it in blender later)
             Vector3 waypointPosition = targetPosition + new Vector3(0, 4, 0);
