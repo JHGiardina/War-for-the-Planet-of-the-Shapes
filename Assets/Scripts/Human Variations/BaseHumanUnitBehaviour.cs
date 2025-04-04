@@ -3,35 +3,42 @@ using UnityEngine.AI;
 
 // Basic implementations so the user only needs to implement the hit method
 
-public abstract class BaseHumanBehaviour : MonoBehaviour
+public abstract class BaseHumanUnitBehaviour : MonoBehaviour
 {
     public float Health = 100;
     public GameObject DeathExplosion;
-    [HideInInspector] public float speed;
+    [HideInInspector] public float Speed;
+    [HideInInspector] public Collider Collider;
 
     protected NavMeshAgent navMeshAgent;
     protected GameObject prismTarget;
-    protected float timeLastAttack;
+    protected Animator animator;
 
     private string PRISM_TAG = "Prism";
 
     // Just implement this to create your unit
     public abstract void Hit();
 
-    // overridable parameters
-    public float baseSpeed = 1;
-
-    public virtual void Start()
+    private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.SetDestination(Vector3.zero);
-        timeLastAttack = float.NegativeInfinity;
-
-        // Expose speed for animations
-        speed = navMeshAgent.velocity.magnitude;
+        animator = GetComponent<Animator>();
+        Collider = GetComponent<Collider>();
     }
 
-    private void Update()
+    public virtual void Start()
+    {
+        // Expose Speed for animations
+        Speed = navMeshAgent.velocity.magnitude;
+        
+        if(animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
+    }
+
+    public virtual void Update()
     {
         // Try a hit within our range (will go through walls but the range is so small this is intended)
         Hit();
@@ -45,11 +52,15 @@ public abstract class BaseHumanBehaviour : MonoBehaviour
         {
             navMeshAgent.SetDestination(prismTarget.transform.position);
         }
+
+        if(Speed >= 0)
+        {
+            animator.SetBool("Run", true);
+        }
     }
 
     public void OnHit(float damage)
     {
-        Debug.Log("Human Health" + Health);
         Health -= damage;
         if(Health <= 0)
         {

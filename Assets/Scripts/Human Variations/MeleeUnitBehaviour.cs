@@ -2,19 +2,21 @@ using UnityEngine;
 
 // Haven't tested yet
 
-public class MeleeUnitBehaviour : BaseHumanBehaviour
+public class MeleeUnitBehaviour : BaseHumanUnitBehaviour
 {
     public float AttackRange = 2;
     public float AttackDamage = 10;
-
     public float attackCooldown = 2;
     public float BaseSpeed = 20f;
+
+    private float timeLastAttack;
 
     public override void Start()
     {
         base.Start();
 
         navMeshAgent.speed = BaseSpeed;
+        timeLastAttack = float.NegativeInfinity;
     }
 
     public override void Hit()

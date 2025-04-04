@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WaveManager : MonoBehaviour
 {
-    public GameObject Enemy;
+    public GameObject[] Enemy;
     public Transform[] SpawnPoints;
     public float TimeBetweenWaves = 5f;
     public int EnemiesPerWave = 5;
@@ -34,7 +34,8 @@ public class WaveManager : MonoBehaviour
 
     void SpawnEnemy()
     {
-        int index = Random.Range(0, SpawnPoints.Length);
-        Instantiate(Enemy, SpawnPoints[index].position, SpawnPoints[index].rotation);
+        int spawnIndex = Random.Range(0, SpawnPoints.Length);
+        int enemyIndex = Random.Range(0, Enemy.Length);
+        Instantiate(Enemy[enemyIndex], SpawnPoints[spawnIndex].position, SpawnPoints[spawnIndex].rotation);
     }
 }
