@@ -4,6 +4,7 @@ using System.Collections;
 public class WaveManager : MonoBehaviour
 {
     public GameObject[] Enemy;
+    public GameObject healthBarPrefab;
     public Transform[] SpawnPoints;
     public float TimeBetweenWaves = 5f;
     public int EnemiesPerWave = 5;
@@ -34,8 +35,24 @@ public class WaveManager : MonoBehaviour
 
     void SpawnEnemy()
     {
+        // Pick a random spawn point and enemy type
         int spawnIndex = Random.Range(0, SpawnPoints.Length);
         int enemyIndex = Random.Range(0, Enemy.Length);
-        Instantiate(Enemy[enemyIndex], SpawnPoints[spawnIndex].position, SpawnPoints[spawnIndex].rotation);
+
+        // Spawn the enemy
+        GameObject newEnemy = Instantiate(Enemy[enemyIndex],
+                                          SpawnPoints[spawnIndex].position,
+                                          SpawnPoints[spawnIndex].rotation);
+
+        // Spawn the Health Bar
+        GameObject newHealthBar = Instantiate(healthBarPrefab);
+
+        // Link them
+        UnitHealthBar barScript = newHealthBar.GetComponent<UnitHealthBar>();
+        if (barScript != null)
+        {
+            UnitHealth unitHealth = newEnemy.GetComponent<UnitHealth>();
+            barScript.targetHealth = unitHealth;
+        }
     }
 }
