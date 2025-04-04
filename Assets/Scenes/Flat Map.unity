@@ -1736,6 +1736,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6931604102822996923, guid: c93fcb52d9b37ba4fa403705edf9d5d4, type: 3}
+      propertyPath: healthBarPrefab
+      value: 
+      objectReference: {fileID: 8798779350667306237, guid: ac4a449e9f4d400438d63f04647c6b5c, type: 3}
+    - target: {fileID: 6931604102822996923, guid: c93fcb52d9b37ba4fa403705edf9d5d4, type: 3}
       propertyPath: Enemy.Array.size
       value: 2
       objectReference: {fileID: 0}
