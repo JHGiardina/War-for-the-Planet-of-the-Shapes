@@ -40,9 +40,10 @@ public class CameraBehavior : MonoBehaviour
 
 
         // Spawn Units
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) /*&& EngineScript.curCount >= 15*/)
         {
             SpawnAtRayHit();
+            //EngineScript.curCount -= 15;
         }
     }
 

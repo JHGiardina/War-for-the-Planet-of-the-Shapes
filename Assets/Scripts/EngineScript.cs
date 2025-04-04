@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EngineScript : MonoBehaviour
 {
-    public static int curCount = 0; 
+    [SerializeField] public static int curCount = 45; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,6 +12,6 @@ public class EngineScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
