@@ -67,7 +67,6 @@ public class RangeUnitBehaviour : BaseHumanUnitBehaviour
                     // Is what we got from ray casting the straight line the prism target or a wall?
                     if(lineHit.collider.gameObject == prism.gameObject)
                     {
-                        Debug.Log("Shoot");
                         // Shoot Laser Logic
                         Vector3 targetPosiion = lineHit.collider.bounds.center;
 

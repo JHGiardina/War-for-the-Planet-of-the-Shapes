@@ -64,7 +64,6 @@ public class HumanUnitBehaviour : MonoBehaviour
         Collider[] hits = Physics.OverlapSphere(transform.position, AttackRange);
         foreach(Collider hit in hits)
         {
-            //Debug.Log(hit);
             PrismUnitBehaviour prism;
             Debug.Log(hit.gameObject);
             if(hit.gameObject.TryGetComponent<PrismUnitBehaviour>(out prism))
