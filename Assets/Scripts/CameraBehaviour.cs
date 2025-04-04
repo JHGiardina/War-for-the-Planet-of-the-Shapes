@@ -44,6 +44,7 @@ public class CameraBehavior : MonoBehaviour
         {
             SpawnAtRayHit();
             //EngineScript.curCount -= 15;
+            EngineScript.curPop += 1;
         }
     }
 

@@ -1691,6 +1691,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawnManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2910259664060875610, guid: c93fcb52d9b37ba4fa403705edf9d5d4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4551662376535872630, guid: c93fcb52d9b37ba4fa403705edf9d5d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1741,7 +1745,7 @@ PrefabInstance:
       objectReference: {fileID: 8798779350667306237, guid: ac4a449e9f4d400438d63f04647c6b5c, type: 3}
     - target: {fileID: 6931604102822996923, guid: c93fcb52d9b37ba4fa403705edf9d5d4, type: 3}
       propertyPath: Enemy.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6931604102822996923, guid: c93fcb52d9b37ba4fa403705edf9d5d4, type: 3}
       propertyPath: TimeBetweenWaves
@@ -1756,6 +1760,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6869129801842507161, guid: 88b6b40ba249a204a94f2e6d159592f2, type: 3}
     - target: {fileID: 6931604102822996923, guid: c93fcb52d9b37ba4fa403705edf9d5d4, type: 3}
+      propertyPath: 'Enemy.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1083077402292200101, guid: 719944d3fe3474572809800b3d526f00, type: 3}
+    - target: {fileID: 6931604102822996923, guid: c93fcb52d9b37ba4fa403705edf9d5d4, type: 3}
       propertyPath: SpawnPoints.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1765,6 +1773,10 @@ PrefabInstance:
       objectReference: {fileID: 856461721}
     - target: {fileID: 6931604102822996923, guid: c93fcb52d9b37ba4fa403705edf9d5d4, type: 3}
       propertyPath: 'SpawnPoints.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1196739052}
+    - target: {fileID: 6931604102822996923, guid: c93fcb52d9b37ba4fa403705edf9d5d4, type: 3}
+      propertyPath: 'SpawnPoints.Array.data[2]'
       value: 
       objectReference: {fileID: 1196739052}
     m_RemovedComponents: []

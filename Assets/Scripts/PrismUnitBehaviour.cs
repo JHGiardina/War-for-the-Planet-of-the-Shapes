@@ -104,6 +104,7 @@ public class PrismUnitBehaviour : MonoBehaviour
             var explosionVfx = Instantiate(DeathExplosion, transform.position, Quaternion.identity);
             Destroy(explosionVfx, 1);
             Destroy(gameObject);
+            EngineScript.curPop -= 1;
         }
     }
 
