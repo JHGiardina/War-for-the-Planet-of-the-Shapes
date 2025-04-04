@@ -1849,12 +1849,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 100
   DeathExplosion: {fileID: 6077638792615033397, guid: b4f1aff922dcf3c4f83269128af8fad0, type: 3}
-  speed: 0
+  Speed: 0
+  Collider: {fileID: 0}
   AttackRange: 15
-  AttackDamage: 100
-  attackCooldown: 2
-  BaseSpeed: 3.5
-  laserVisibilityTime: 0.5
+  AttackDamage: 20
+  AttackCooldown: 2
+  LaserVisibilityTime: 0.5
+  BaseSpeed: 5
 --- !u!120 &4276709816659526655
 LineRenderer:
   serializedVersion: 2
@@ -2101,7 +2102,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0e481246ff9e74b3b952f572b24b3d61, type: 2}
+  - {fileID: 2100000, guid: 823e0618ee76c4c468abffcccd5fcc3f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
