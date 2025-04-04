@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8207500342734117854}
   - component: {fileID: -2068787347382524771}
   - component: {fileID: -6088913415828985682}
+  - component: {fileID: -3480023838159278933}
   m_Layer: 7
   m_Name: Prism Unit
   m_TagString: Prism
@@ -127,9 +128,9 @@ MonoBehaviour:
   AttackRange: 15
   AttackDamage: 35
   Health: 100
-  attackCooldown: 2
-  laserVisibilityTime: 0.15
-  speed: 0
+  AttackCooldown: 2
+  LaserVisibilityTime: 0.5
+  Collider: {fileID: 0}
   DeathExplosion: {fileID: 6077638792615033397, guid: 1682634f0c8f3be459774a9e90f64dd9, type: 3}
   WayPointObject: {fileID: 7567448413870206677, guid: c39c8f004de999e4284c2c8e2c32fb4c, type: 3}
 --- !u!65 &-2068787347382524771
@@ -260,3 +261,30 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!54 &-3480023838159278933
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873835107319111430}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
