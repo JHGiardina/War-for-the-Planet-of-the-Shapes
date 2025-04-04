@@ -7,12 +7,15 @@ public class HumanUnitBehaviour : MonoBehaviour
     public float AttackDamage = 10;
     public float Health = 100;
     public float attackCooldown = 2;
+    [HideInInspector] public float speed;
     
     [SerializeField] GameObject DeathExplosion;
 
     private NavMeshAgent navMeshAgent;
     private GameObject prismTarget;
     private float timeLastAttack;
+
+    public Animator animator;
 
     private string PRISM_TAG = "Prism";
 
@@ -21,6 +24,10 @@ public class HumanUnitBehaviour : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.SetDestination(Vector3.zero);
         timeLastAttack = float.NegativeInfinity;
+        if(animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
     }
 
     private void Update()
@@ -28,7 +35,7 @@ public class HumanUnitBehaviour : MonoBehaviour
         // Try a hit within our range (will go through walls but the range is so small this is intended)
         Hit();
 
-         // Get a human target if we don't have one else move towards human target
+         // Get a human target if we don't have one or its dead else move towards human target
         if(prismTarget == null)
         {
             FindPrismTarget();
@@ -36,6 +43,14 @@ public class HumanUnitBehaviour : MonoBehaviour
         else
         {
             navMeshAgent.SetDestination(prismTarget.transform.position);
+        }
+
+        // Expose speed for animations
+        speed = navMeshAgent.velocity.magnitude;
+
+        if(speed >= 0)
+        {
+            animator.SetBool("Run", true);
         }
     }
 
@@ -49,7 +64,6 @@ public class HumanUnitBehaviour : MonoBehaviour
         Collider[] hits = Physics.OverlapSphere(transform.position, AttackRange);
         foreach(Collider hit in hits)
         {
-            //Debug.Log(hit);
             PrismUnitBehaviour prism;
             Debug.Log(hit.gameObject);
             if(hit.gameObject.TryGetComponent<PrismUnitBehaviour>(out prism))

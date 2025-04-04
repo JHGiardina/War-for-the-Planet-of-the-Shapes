@@ -893,7 +893,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1196739052}
   m_Layer: 0
-  m_Name: SpawnPoint (1)
+  m_Name: SpawnPoint 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1614,9 +1614,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6931604102822996923, guid: c93fcb52d9b37ba4fa403705edf9d5d4, type: 3}
-      propertyPath: TimeBetweenWaves
-      value: 10
+      propertyPath: EnemiesPerWave
+      value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6931604102822996923, guid: c93fcb52d9b37ba4fa403705edf9d5d4, type: 3}
+      propertyPath: Enemy.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931604102822996923, guid: c93fcb52d9b37ba4fa403705edf9d5d4, type: 3}
+      propertyPath: TimeBetweenWaves
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931604102822996923, guid: c93fcb52d9b37ba4fa403705edf9d5d4, type: 3}
+      propertyPath: 'Enemy.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6869129801842507161, guid: 3d5cbb7b41e79e7479c58ccd5094e8ab, type: 3}
+    - target: {fileID: 6931604102822996923, guid: c93fcb52d9b37ba4fa403705edf9d5d4, type: 3}
+      propertyPath: 'Enemy.Array.data[1]'
+      value: 
+      objectReference: {fileID: 6869129801842507161, guid: 88b6b40ba249a204a94f2e6d159592f2, type: 3}
     - target: {fileID: 6931604102822996923, guid: c93fcb52d9b37ba4fa403705edf9d5d4, type: 3}
       propertyPath: SpawnPoints.Array.size
       value: 2

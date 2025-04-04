@@ -5,16 +5,20 @@ public class CameraBehavior : MonoBehaviour
     public GameObject SpawnUnit;
     private Vector3 orbitCenter;
     private Vector3 orbitAxis;
-    private float rotationSpeed;
-    private float zoomSpeed;
+    private float rotationSpeedMouse;
+    private float zoomSpeedMouse;
+    private float rotationSpeedKeys;
 
     void Start()
     {
         orbitCenter = Vector3.zero;
         // Rotate around y-axis
         orbitAxis = new Vector3(0, 1, 0);
-        rotationSpeed = 1000;
-        zoomSpeed = 30;
+
+        // Arbitrary speeds based on testing
+        rotationSpeedKeys = 100;
+        rotationSpeedMouse = 1000;
+        zoomSpeedMouse = 30;
     }
 
     void Update()
@@ -23,13 +27,17 @@ public class CameraBehavior : MonoBehaviour
 
         // Zoom
         Vector3 cameraToOrign = orbitCenter - Camera.main.transform.position;
-        Camera.main.transform.position += zoomSpeed * cameraToOrign * Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime;
+        Camera.main.transform.position += zoomSpeedMouse * cameraToOrign * Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime;
 
-        // Rotation around World Origin
+        // Rotation around World Origin with middle mouse
         if (Input.GetMouseButton(2))
         {
-            Camera.main.transform.RotateAround(orbitCenter, orbitAxis, rotationSpeed *  Input.GetAxis("Mouse X") * Time.deltaTime);
+            Camera.main.transform.RotateAround(orbitCenter, orbitAxis, rotationSpeedMouse *  Input.GetAxis("Mouse X") * Time.deltaTime);
         }
+
+        // Rotation around World Origin with wasd and arrow keys
+        Camera.main.transform.RotateAround(orbitCenter, orbitAxis, rotationSpeedKeys *  Input.GetAxis("Horizontal") * Time.deltaTime);
+
 
         // Spawn Units
         if (Input.GetMouseButtonDown(0))
