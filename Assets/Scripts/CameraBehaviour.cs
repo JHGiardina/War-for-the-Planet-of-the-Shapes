@@ -34,14 +34,17 @@ public class CameraBehavior : MonoBehaviour
         Camera.main.transform.position += zoomSpeedMouse * cameraToOrign * Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime;
 
         // Rotation around World Origin with middle mouse
-        if (Input.GetMouseButton(2))
-        {
-            Vector3 orbitCenter = new Vector3(transform.position.x, 1, transform.position.z);
-            Camera.main.transform.RotateAround(orbitCenter, orbitAxis, rotationSpeed *  Input.GetAxis("Mouse X") * Time.deltaTime);
-        }
+        //if (Input.GetMouseButton(2))
+        //{
+        //    Vector3 orbitCenter = new Vector3(transform.position.x, 1, transform.position.z);
+        //    Camera.main.transform.RotateAround(orbitCenter, orbitAxis, rotationSpeed *  Input.GetAxis("Mouse X") * Time.deltaTime);
+        //}
 
+        HandleUnitSpawn();
+    }
 
-
+    private void HandleUnitSpawn()
+    {
         // Spawn Units
         if (Input.GetMouseButtonDown(0) /*&& EngineScript.curCount >= 15*/)
         {

@@ -46,7 +46,6 @@ public class WaveManager : MonoBehaviour
         // Yes if you need add an additional unit you need to add an additional weight
         int[] EnemyWeights = {meleeSpawnFactor, rangedSpawnFactor, tankSpawnFactor};
         int enemyIndex = GetWeightedRandomIndex(EnemyWeights);
-        Debug.Log(enemyIndex);
 
         // Spawn the enemy
         GameObject newEnemy = Instantiate(Enemy[enemyIndex],
@@ -79,9 +78,7 @@ public class WaveManager : MonoBehaviour
         }
 
         // Select random value using weights
-        
         int totalWeights = prefixSum[prefixSum.Length - 1];
-        Debug.Log(totalWeights);
         int randomNum = Random.Range(0, totalWeights);
         for(int i = 0; i < prefixSum.Length; i++)
         {
