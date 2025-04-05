@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class CameraBehavior : MonoBehaviour
@@ -5,10 +6,10 @@ public class CameraBehavior : MonoBehaviour
     public GameObject SpawnUnit;
     public GameObject WayPointObject;
     public Transform RoundTextCameraLocation;
+    public float transitionTime = 2;
     [HideInInspector] public bool IsUserControllable;
+    [HideInInspector] public bool isTransitioning;
 
-    private Vector3 orbitAxis;
-    private float rotationSpeed;
     private float zoomSpeedMouse;
     private float movementSpeed;
 
@@ -19,18 +20,15 @@ public class CameraBehavior : MonoBehaviour
 
     void Start()
     {
-        // Rotate around y-axis
-        orbitAxis = new Vector3(0, 1, 0);
-
         // Arbitrary speeds based on testing
         movementSpeed = 20;
-        rotationSpeed = 1000;
         zoomSpeedMouse = 30;
+        isTransitioning = false;
     }
 
     void Update()
     {
-        if(IsUserControllable)
+        if(IsUserControllable && !isTransitioning)
         {
             HandlePosition();
             HandleZoom();
@@ -117,21 +115,50 @@ public class CameraBehavior : MonoBehaviour
     }
 
     public void CameraToRoundTextPosition()
-    {
+    {            
         // Save where we where previously we will need to come back
         previousCameraPosition = transform.position;
         previousCameraRotation = transform.rotation;
 
-        Camera.main.transform.position = RoundTextCameraLocation.position;
-        Camera.main.transform.rotation = RoundTextCameraLocation.rotation;
+        Vector3 targetPosition = RoundTextCameraLocation.position;
+        Quaternion targetRotation = RoundTextCameraLocation.rotation;
+
+        StartCoroutine(TransitionBetweenPositions(targetPosition, targetRotation));
     }
 
     public void ReturnCameraToPreviousPosition()
     {
-        if(previousCameraPosition != null)
+
+        Vector3 targetPosition = previousCameraPosition;
+        Quaternion targetRotation = previousCameraRotation;
+
+        StartCoroutine(TransitionBetweenPositions(targetPosition, targetRotation));
+    }
+
+    public IEnumerator TransitionBetweenPositions(Vector3 targetPosition, Quaternion targetRotation)
+    {
+        // I had to ask Gemini how to use lerp, slerp, and coroutines for transitioning
+
+        isTransitioning = true;
+
+        Vector3 orignalPosition = transform.position;
+        Quaternion orignalRotation = transform.rotation;
+        
+        for(float t = 0; t < transitionTime; t += Time.deltaTime)
         {
-            Camera.main.transform.position = previousCameraPosition;
-            Camera.main.transform.rotation = previousCameraRotation;
+            Camera.main.transform.position = Vector3.Lerp(orignalPosition, targetPosition, t / transitionTime);
+            Camera.main.transform.rotation = Quaternion.Slerp(orignalRotation, targetRotation, t / transitionTime);
+
+            t += Time.deltaTime;
+            yield return null;
         }
+
+        // Just in case the time steps dont bring us to our exact location
+        Camera.main.transform.position = targetPosition;
+        Camera.main.transform.rotation = targetRotation;
+
+        isTransitioning = false;
+        
+
     }
 }

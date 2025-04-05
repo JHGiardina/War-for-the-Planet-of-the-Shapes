@@ -124,7 +124,8 @@ public class PrismUnitBehaviour : MonoBehaviour
                 EngineScript.curCount += collection.extractAmt;
                 curTime = 0f;
 
-            }else
+            }
+            else
             {
                 curTime += Time.deltaTime;
             }

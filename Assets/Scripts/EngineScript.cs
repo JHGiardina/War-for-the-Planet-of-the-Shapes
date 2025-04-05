@@ -44,7 +44,9 @@ public class EngineScript : MonoBehaviour
 
     private void StartTransitionRound()
     {
+        // User loses control during round transitions 
         Camera.IsUserControllable = false;
+
         Camera.CameraToRoundTextPosition();
 
         waveNumber++;
@@ -56,10 +58,13 @@ public class EngineScript : MonoBehaviour
 
     private void TransitionRound()
     {
+
         Camera.ReturnCameraToPreviousPosition();
         WaveManager.SpawnWave();
         
         RoundText.enabled = false;
+
+        // User regains control (must also wait for transition to finish)
         Camera.IsUserControllable = true;
     }
 

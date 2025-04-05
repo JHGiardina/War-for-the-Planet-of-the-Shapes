@@ -1849,7 +1849,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 100
   DeathExplosion: {fileID: 6077638792615033397, guid: b4f1aff922dcf3c4f83269128af8fad0, type: 3}
-  HealthBar: {fileID: 0}
   Collider: {fileID: 0}
   AttackRange: 2
   AttackDamage: 10
