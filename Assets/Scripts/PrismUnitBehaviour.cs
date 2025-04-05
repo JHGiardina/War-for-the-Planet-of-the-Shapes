@@ -19,12 +19,17 @@ public class PrismUnitBehaviour : MonoBehaviour
     private LineRenderer laser;
     private Vector3 targetPosition;
     private int layerMask;
+    private float curTime = 0f;
+
+    //public GameObject gameEngine;
+    //private EngineScript engine;
 
     private void Awake()
     {
         Collider = GetComponent<Collider>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         laser = GetComponent<LineRenderer>();
+        //engine = gameEngine.GetComponent<EngineScript>();
     }
 
     private void Start()
@@ -99,6 +104,7 @@ public class PrismUnitBehaviour : MonoBehaviour
             var explosionVfx = Instantiate(DeathExplosion, transform.position, Quaternion.identity);
             Destroy(explosionVfx, 1);
             Destroy(gameObject);
+            EngineScript.curPop -= 1;
         }
     }
 
@@ -134,5 +140,25 @@ public class PrismUnitBehaviour : MonoBehaviour
         laser.SetPosition(0, laserBeginPosition);
         laser.SetPosition(1, target);
     }
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.CompareTag("Collector"))
+        {
+
+            Collection collection = other.GetComponent<Collection>();
+            if(curTime >= collection.extractRate)
+            {
+                EngineScript.curCount += collection.extractAmt;
+                curTime = 0f;
+
+            }else
+            {
+                curTime += Time.deltaTime;
+            }
+        }
+    }
+
+
 
 }
+
