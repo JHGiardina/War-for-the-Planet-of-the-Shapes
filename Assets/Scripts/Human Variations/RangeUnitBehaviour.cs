@@ -58,12 +58,10 @@ public class RangeUnitBehaviour : BaseHumanUnitBehaviour
             // Is the collider from a prism?
             if(hit.gameObject.TryGetComponent<PrismUnitBehaviour>(out PrismUnitBehaviour prism))
             {
-                Debug.Log(prism.gameObject);
 
                 // Can we actually hit that prism from our position by drawing a straight line?
                 if(Physics.Linecast(Collider.bounds.center, prism.Collider.bounds.center, out RaycastHit lineHit, layerMask))
                 {
-                    Debug.Log(lineHit.collider.gameObject);
                     // Is what we got from ray casting the straight line the prism target or a wall?
                     if(lineHit.collider.gameObject == prism.gameObject)
                     {

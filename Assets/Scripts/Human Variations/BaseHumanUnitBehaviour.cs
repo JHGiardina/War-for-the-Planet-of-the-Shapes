@@ -53,7 +53,7 @@ public abstract class BaseHumanUnitBehaviour : MonoBehaviour
             navMeshAgent.SetDestination(prismTarget.transform.position);
         }
 
-        if(Speed >= 0)
+        if(Speed >= 0 && animator != null)
         {
             animator.SetBool("Run", true);
         }
