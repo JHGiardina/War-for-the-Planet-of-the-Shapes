@@ -3,21 +3,19 @@ using UnityEngine;
 public class CameraBehavior : MonoBehaviour
 {
     public GameObject SpawnUnit;
+    public GameObject WayPointObject;
     public Transform RoundTextCameraLocation;
-
-    // How far can the camera be moved
-    public Vector3 maxScreenPosition;
-    public Vector3 minScreenPosition;
+    [HideInInspector] public bool IsUserControllable;
 
     private Vector3 orbitAxis;
     private float rotationSpeed;
     private float zoomSpeedMouse;
     private float movementSpeed;
 
-    private Transform previousCameraLocation;
+    private Vector3 previousCameraPosition;
+    private Quaternion previousCameraRotation;
 
     private string SPAWNABLE_SURFACE_TAG = "Prism Terrain";
-
 
     void Start()
     {
@@ -32,11 +30,13 @@ public class CameraBehavior : MonoBehaviour
 
     void Update()
     {
-        HandlePosition();
-
-        HandleZoom();
-
-        HandleUnitSpawn();
+        if(IsUserControllable)
+        {
+            HandlePosition();
+            HandleZoom();
+            HandleUnitSpawn();
+            HandleWayPoints();
+        }
     }
 
     private void HandleUnitSpawn()
@@ -78,21 +78,60 @@ public class CameraBehavior : MonoBehaviour
         Camera.main.transform.position += zoomSpeedMouse * cameraToOrign * Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime;
     }
 
+    private void HandleWayPoints()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            SpawnWayPoints();
+        }
+    }
+
+    private void SpawnWayPoints()
+    {
+        // get all prisms
+        PrismUnitBehaviour[] prisms = GameObject.FindObjectsByType<PrismUnitBehaviour>(FindObjectsSortMode.None);
+
+        // Spawn WayPoint object and calculate position
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            // Destroy old waypoints
+            WaypointBehaviour[] previousWayPoints = Object.FindObjectsByType<WaypointBehaviour>(FindObjectsSortMode.None);
+            foreach(WaypointBehaviour previousWayPoint in previousWayPoints)
+            {
+                Destroy(previousWayPoint.gameObject);
+            }
+
+            // spawn new waypoints
+            Vector3 waypointPosition = hit.point + new Vector3(0, 4, 0);
+            var waypointObject = Instantiate(WayPointObject, waypointPosition, Quaternion.identity);
+            Destroy(waypointObject, 3);
+            
+            // move units toward new waypoint
+            foreach(PrismUnitBehaviour prism in prisms)
+            {
+                prism.navMeshAgent.SetDestination(hit.point);
+            }
+            
+        }        
+    }
+
     public void CameraToRoundTextPosition()
     {
         // Save where we where previously we will need to come back
-        previousCameraLocation = transform;
+        previousCameraPosition = transform.position;
+        previousCameraRotation = transform.rotation;
 
-        transform.position = RoundTextCameraLocation.position;
-        transform.rotation = RoundTextCameraLocation.rotation;
+        Camera.main.transform.position = RoundTextCameraLocation.position;
+        Camera.main.transform.rotation = RoundTextCameraLocation.rotation;
     }
 
     public void ReturnCameraToPreviousPosition()
     {
-        if(previousCameraLocation != null)
+        if(previousCameraPosition != null)
         {
-            transform.position = previousCameraLocation.position;
-            transform.rotation = previousCameraLocation.rotation;
+            Camera.main.transform.position = previousCameraPosition;
+            Camera.main.transform.rotation = previousCameraRotation;
         }
     }
 }
