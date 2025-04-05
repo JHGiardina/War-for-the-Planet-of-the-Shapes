@@ -31,6 +31,7 @@ public abstract class BaseHumanUnitBehaviour : MonoBehaviour
     {
         // Expose Speed for animations
         Speed = navMeshAgent.velocity.magnitude;
+        Debug.Log(Speed);
         
         if(animator == null)
         {

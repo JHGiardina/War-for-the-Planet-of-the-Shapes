@@ -11,6 +11,7 @@ public class PrismUnitBehaviour : MonoBehaviour
     [HideInInspector] public Collider Collider;
 
     [SerializeField] GameObject DeathExplosion;
+    [SerializeField] GameObject SpawnExplosion;
     [SerializeField] GameObject WayPointObject;
 
     private NavMeshAgent navMeshAgent;
@@ -39,6 +40,9 @@ public class PrismUnitBehaviour : MonoBehaviour
 
         // Do collisions with everything but the Prism layer
         layerMask = ~LayerMask.GetMask("Prism");
+
+        var spawnExplosion = Instantiate(SpawnExplosion, transform.position, Quaternion.identity);
+        Destroy(spawnExplosion, 1);
     }
         
     private void Update()

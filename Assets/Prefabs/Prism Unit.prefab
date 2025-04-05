@@ -132,6 +132,7 @@ MonoBehaviour:
   LaserVisibilityTime: 0.5
   Collider: {fileID: 0}
   DeathExplosion: {fileID: 6077638792615033397, guid: 1682634f0c8f3be459774a9e90f64dd9, type: 3}
+  SpawnExplosion: {fileID: 1001209505210446, guid: 172998df67304734aaab369580dd9b98, type: 3}
   WayPointObject: {fileID: 7567448413870206677, guid: c39c8f004de999e4284c2c8e2c32fb4c, type: 3}
 --- !u!65 &-2068787347382524771
 BoxCollider:
