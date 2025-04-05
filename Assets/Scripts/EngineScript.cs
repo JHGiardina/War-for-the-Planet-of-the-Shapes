@@ -1,19 +1,30 @@
 using UnityEngine;
+using TMPro;
 
 public class EngineScript : MonoBehaviour
 {
+    public TextMeshProUGUI RoundText;
+    public WaveManager WaveManager;
+    public CameraBehavior Camera;
+
     public static int curCount = 45; 
     public static int curPop = 0;
     private float curPopInt = 0f;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    private int waveNumber;
+    
     void Start()
     {
-        
+        waveNumber = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if(GetNumberOfHumans() <= 0)
+        {
+            TransitionRound();
+        }
+        
         curPopInt += Time.deltaTime;
         if (curPopInt >= 5)
         {
@@ -26,6 +37,18 @@ public class EngineScript : MonoBehaviour
     {
         int count = GameObject.FindGameObjectsWithTag("Prism").Length;
         return count;
-        
+    }
+
+    private void TransitionRound()
+    {
+        waveNumber++;
+        RoundText.text = "Round " + waveNumber;
+        WaveManager.SpawnWave();
+    }
+
+    private int GetNumberOfHumans()
+    {
+        BaseHumanUnitBehaviour[] aliveHumans = GameObject.FindObjectsByType<BaseHumanUnitBehaviour>(FindObjectsSortMode.None);
+        return aliveHumans.Length;
     }
 }

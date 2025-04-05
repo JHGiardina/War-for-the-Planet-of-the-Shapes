@@ -3,12 +3,11 @@ using System.Collections;
 
 public class WaveManager : MonoBehaviour
 {
+    public bool SpawnAutomatically = true;
     public GameObject[] Enemy;
-    public GameObject healthBarPrefab;
     public Transform[] SpawnPoints;
     public float TimeBetweenWaves = 5f;
     public int EnemiesPerWave = 5;
-    public bool SpawnAutomatically = true;
 
     // Probability a tanked is spawned is tankSpawnFactor / (tankSpawnFactor + rangedSpawnFact + meleeSpawnFactor)
     public int tankSpawnFactor = 1;
@@ -16,8 +15,6 @@ public class WaveManager : MonoBehaviour
     public int meleeSpawnFactor = 5;
 
     private float countdown = 0f;
-    private int waveNumber = 0;
-
 
     void Update()
     {
@@ -33,8 +30,6 @@ public class WaveManager : MonoBehaviour
 
     public void SpawnWave()
     {
-        waveNumber++;
-
         for (int i = 0; i < EnemiesPerWave; i++)
         {
             SpawnEnemy();
@@ -54,19 +49,6 @@ public class WaveManager : MonoBehaviour
         GameObject newEnemy = Instantiate(Enemy[enemyIndex],
                                           SpawnPoints[spawnIndex].position,
                                           SpawnPoints[spawnIndex].rotation);
-
-        // I moved the health bar to the unit prefab
-
-        // Spawn the Health Bar
-        //GameObject newHealthBar = Instantiate(healthBarPrefab);
-
-        // Link them
-        //UnitHealthBar barScript = newHealthBar.GetComponent<UnitHealthBar>();
-        //if (barScript != null)
-        //{
-        //    UnitHealth unitHealth = newEnemy.GetComponent<UnitHealth>();
-        //    barScript.targetHealth = unitHealth;
-        //}
     }
 
     // This will throw an out of bounds error if weights is a zero length array

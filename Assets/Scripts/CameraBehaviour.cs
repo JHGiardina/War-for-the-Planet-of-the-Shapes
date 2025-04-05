@@ -3,6 +3,7 @@ using UnityEngine;
 public class CameraBehavior : MonoBehaviour
 {
     public GameObject SpawnUnit;
+    public Transform RoundTextCameraLocation;
 
     // How far can the camera be moved
     public Vector3 maxScreenPosition;
@@ -12,6 +13,8 @@ public class CameraBehavior : MonoBehaviour
     private float rotationSpeed;
     private float zoomSpeedMouse;
     private float movementSpeed;
+
+    private Transform previousCameraLocation;
 
     private string SPAWNABLE_SURFACE_TAG = "Prism Terrain";
 
@@ -32,13 +35,6 @@ public class CameraBehavior : MonoBehaviour
         HandlePosition();
 
         HandleZoom();
-
-        // Rotation around World Origin with middle mouse
-        //if (Input.GetMouseButton(2))
-        //{
-        //    Vector3 orbitCenter = new Vector3(transform.position.x, 1, transform.position.z);
-        //    Camera.main.transform.RotateAround(orbitCenter, orbitAxis, rotationSpeed *  Input.GetAxis("Mouse X") * Time.deltaTime);
-        //}
 
         HandleUnitSpawn();
     }
@@ -64,7 +60,6 @@ public class CameraBehavior : MonoBehaviour
                 Vector3 spawnLocation = hit.point;
                 Instantiate(SpawnUnit, spawnLocation, SpawnUnit.transform.rotation);
             }
-
         }
     }
 
@@ -81,5 +76,23 @@ public class CameraBehavior : MonoBehaviour
     {
         Vector3 cameraToOrign = Vector3.zero - Camera.main.transform.position;
         Camera.main.transform.position += zoomSpeedMouse * cameraToOrign * Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime;
+    }
+
+    public void CameraToRoundTextPosition()
+    {
+        // Save where we where previously we will need to come back
+        previousCameraLocation = transform;
+
+        transform.position = RoundTextCameraLocation.position;
+        transform.rotation = RoundTextCameraLocation.rotation;
+    }
+
+    public void ReturnCameraToPreviousPosition()
+    {
+        if(previousCameraLocation != null)
+        {
+            transform.position = previousCameraLocation.position;
+            transform.rotation = previousCameraLocation.rotation;
+        }
     }
 }
