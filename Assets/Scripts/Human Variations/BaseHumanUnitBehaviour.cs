@@ -7,7 +7,6 @@ public abstract class BaseHumanUnitBehaviour : MonoBehaviour
 {
     public float Health = 100;
     public GameObject DeathExplosion;
-    [HideInInspector] public float Speed;
     [HideInInspector] public Collider Collider;
 
     protected NavMeshAgent navMeshAgent;
@@ -29,10 +28,6 @@ public abstract class BaseHumanUnitBehaviour : MonoBehaviour
 
     public virtual void Start()
     {
-        // Expose Speed for animations
-        Speed = navMeshAgent.velocity.magnitude;
-        Debug.Log(Speed);
-        
         if(animator == null)
         {
             animator = GetComponent<Animator>();
@@ -54,9 +49,14 @@ public abstract class BaseHumanUnitBehaviour : MonoBehaviour
             navMeshAgent.SetDestination(prismTarget.transform.position);
         }
 
-        if(Speed >= 0 && animator != null)
+        Debug.Log(navMeshAgent.velocity.magnitude);
+        if(navMeshAgent.velocity.magnitude >= 0 && animator != null)
         {
             animator.SetBool("Run", true);
+        }
+        else
+        {
+            animator.SetBool("Run", false);
         }
     }
 

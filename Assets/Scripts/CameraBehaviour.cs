@@ -69,7 +69,7 @@ public class CameraBehavior : MonoBehaviour
         float inputX = Input.GetAxisRaw("Horizontal"); 
         float inputZ = Input.GetAxisRaw("Vertical");
 
-        Vector3 movementDirection = new Vector3(-inputX, 0, -inputZ);
+        Vector3 movementDirection = new Vector3(inputX, 0, inputZ);
         Camera.main.transform.position += movementSpeed * movementDirection * Time.deltaTime;
     }
 }
