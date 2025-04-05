@@ -7,6 +7,8 @@ TagManager:
   - Human
   - Prism
   - Collector
+  - FxTemporaire
+  - Prism Terrain
   layers:
   - Default
   - TransparentFX

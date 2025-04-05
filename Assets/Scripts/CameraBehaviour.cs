@@ -13,6 +13,8 @@ public class CameraBehavior : MonoBehaviour
     private float zoomSpeedMouse;
     private float movementSpeed;
 
+    private string SPAWNABLE_SURFACE_TAG = "Prism Terrain";
+
 
     void Start()
     {
@@ -59,8 +61,12 @@ public class CameraBehavior : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            Vector3 spawnLocation = hit.point;
-            Instantiate(SpawnUnit, spawnLocation, SpawnUnit.transform.rotation);
+            if(hit.collider.gameObject.tag == SPAWNABLE_SURFACE_TAG)
+            {
+                Vector3 spawnLocation = hit.point;
+                Instantiate(SpawnUnit, spawnLocation, SpawnUnit.transform.rotation);
+            }
+
         }
     }
 
