@@ -31,9 +31,7 @@ public class CameraBehavior : MonoBehaviour
     {
         HandlePosition();
 
-        // Zoom
-        Vector3 cameraToOrign = Vector3.zero - Camera.main.transform.position;
-        Camera.main.transform.position += zoomSpeedMouse * cameraToOrign * Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime;
+        HandleZoom();
 
         // Rotation around World Origin with middle mouse
         //if (Input.GetMouseButton(2))
@@ -77,5 +75,11 @@ public class CameraBehavior : MonoBehaviour
 
         Vector3 movementDirection = new Vector3(inputX, 0, inputZ);
         Camera.main.transform.position += movementSpeed * movementDirection * Time.deltaTime;
+    }
+
+    private void HandleZoom()
+    {
+        Vector3 cameraToOrign = Vector3.zero - Camera.main.transform.position;
+        Camera.main.transform.position += zoomSpeedMouse * cameraToOrign * Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime;
     }
 }

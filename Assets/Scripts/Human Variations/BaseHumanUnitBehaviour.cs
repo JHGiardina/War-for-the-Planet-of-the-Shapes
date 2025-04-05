@@ -13,6 +13,7 @@ public abstract class BaseHumanUnitBehaviour : MonoBehaviour
     protected GameObject prismTarget;
     protected Animator animator;
 
+    private UnitHealthBar healthBar;
     private string PRISM_TAG = "Prism";
 
     // Just implement this to create your unit
@@ -24,6 +25,8 @@ public abstract class BaseHumanUnitBehaviour : MonoBehaviour
         navMeshAgent.SetDestination(Vector3.zero);
         animator = GetComponent<Animator>();
         Collider = GetComponent<Collider>();
+        healthBar = GetComponentInChildren<UnitHealthBar>();
+        
     }
 
     public virtual void Start()
@@ -49,7 +52,7 @@ public abstract class BaseHumanUnitBehaviour : MonoBehaviour
             navMeshAgent.SetDestination(prismTarget.transform.position);
         }
 
-        Debug.Log(navMeshAgent.velocity.magnitude);
+        //Debug.Log(navMeshAgent.velocity.magnitude);
         if(navMeshAgent.velocity.magnitude >= 0 && animator != null)
         {
             animator.SetBool("Run", true);
@@ -63,6 +66,8 @@ public abstract class BaseHumanUnitBehaviour : MonoBehaviour
     public void OnHit(float damage)
     {
         Health -= damage;
+        healthBar.CurrentHealth = Health;
+        
         if(Health <= 0)
         {
             var explosionVfx = Instantiate(DeathExplosion, transform.position, Quaternion.identity);

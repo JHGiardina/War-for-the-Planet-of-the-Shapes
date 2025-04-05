@@ -55,16 +55,18 @@ public class WaveManager : MonoBehaviour
                                           SpawnPoints[spawnIndex].position,
                                           SpawnPoints[spawnIndex].rotation);
 
+        // I moved the health bar to the unit prefab
+
         // Spawn the Health Bar
-        GameObject newHealthBar = Instantiate(healthBarPrefab);
+        //GameObject newHealthBar = Instantiate(healthBarPrefab);
 
         // Link them
-        UnitHealthBar barScript = newHealthBar.GetComponent<UnitHealthBar>();
-        if (barScript != null)
-        {
-            UnitHealth unitHealth = newEnemy.GetComponent<UnitHealth>();
-            barScript.targetHealth = unitHealth;
-        }
+        //UnitHealthBar barScript = newHealthBar.GetComponent<UnitHealthBar>();
+        //if (barScript != null)
+        //{
+        //    UnitHealth unitHealth = newEnemy.GetComponent<UnitHealth>();
+        //    barScript.targetHealth = unitHealth;
+        //}
     }
 
     // This will throw an out of bounds error if weights is a zero length array

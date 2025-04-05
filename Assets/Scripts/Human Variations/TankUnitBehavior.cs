@@ -46,8 +46,6 @@ public class TankUnitBehavior : BaseHumanUnitBehaviour
     {
         // FYI lasers are shot from collider center to avoid colliding with the floor
 
-        Debug.Log("Hit");
-
         // Check if we can attack or on cooldown
         float timeSinceLastAttack = Time.time - timeLastAttack;
         if(timeSinceLastAttack < AttackCooldown) return;
@@ -59,7 +57,7 @@ public class TankUnitBehavior : BaseHumanUnitBehaviour
             // Is the collider from a prism?
             if(hit.gameObject.TryGetComponent<PrismUnitBehaviour>(out PrismUnitBehaviour prism))
             {
-
+                 Debug.Log(hit.gameObject);
                 // Can we actually hit that prism from our position by drawing a straight line?
                 if(Physics.Linecast(Collider.bounds.center, prism.Collider.bounds.center, out RaycastHit lineHit, layerMask))
                 {

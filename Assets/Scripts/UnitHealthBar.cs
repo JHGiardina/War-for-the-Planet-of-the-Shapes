@@ -3,36 +3,25 @@ using UnityEngine.UI;
 
 public class UnitHealthBar : MonoBehaviour
 {
-    public UnitHealth targetHealth;
+    public float MaxHealth;
+    public float MinHealth;
+    [HideInInspector] public float CurrentHealth;
     public Slider healthSlider;
     public Image fillImage;
     public Vector3 offset = new Vector3(0, 2f, 0);
 
     void Start()
     {
-        if (targetHealth != null && healthSlider != null)
-        {
-            healthSlider.maxValue = targetHealth.maxHealth;
-            healthSlider.value = targetHealth.maxHealth;
-        }
+        CurrentHealth = MaxHealth;
     }
 
     void Update()
     {
-        if (targetHealth == null)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        transform.LookAt(Camera.main.transform.position);
 
-        transform.position = targetHealth.transform.position + offset;
-
-        transform.rotation = Quaternion.identity;
-
-        float currentHealth = targetHealth.GetCurrentHealth();
-        healthSlider.value = currentHealth;
-
-        float healthRatio = currentHealth / healthSlider.maxValue;
+        float healthRatio = CurrentHealth / MaxHealth;
+        healthSlider.value = healthRatio;
+        Debug.Log(healthRatio);
         fillImage.color = Color.Lerp(Color.red, Color.green, healthRatio);
     }
 }
