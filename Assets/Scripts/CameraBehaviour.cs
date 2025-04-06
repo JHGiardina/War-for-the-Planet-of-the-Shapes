@@ -128,7 +128,6 @@ public class CameraBehavior : MonoBehaviour
 
     public void ReturnCameraToPreviousPosition()
     {
-
         Vector3 targetPosition = previousCameraPosition;
         Quaternion targetRotation = previousCameraRotation;
 

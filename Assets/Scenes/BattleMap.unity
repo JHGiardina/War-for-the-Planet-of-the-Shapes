@@ -3743,6 +3743,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8798779350667306237, guid: ac4a449e9f4d400438d63f04647c6b5c, type: 3}
     - target: {fileID: 6931604102822996923, guid: c93fcb52d9b37ba4fa403705edf9d5d4, type: 3}
+      propertyPath: tankSpawnFactor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931604102822996923, guid: c93fcb52d9b37ba4fa403705edf9d5d4, type: 3}
       propertyPath: Enemy.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -10958,7 +10962,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1459212951}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e1114798ec8f88c4c9268d4e6846e3de, type: 3}
@@ -13520,7 +13524,9 @@ MonoBehaviour:
   SpawnUnit: {fileID: 873835107319111430, guid: 750c157501bae234fa1bb2b45c75c1a3, type: 3}
   WayPointObject: {fileID: 7567448413870206677, guid: c39c8f004de999e4284c2c8e2c32fb4c, type: 3}
   RoundTextCameraLocation: {fileID: 840592718}
+  transitionTime: 2
   IsUserControllable: 0
+  isTransitioning: 0
 --- !u!1 &1711786052 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 247425834309319343, guid: 6101fa596a6a40c4b8ecf8e2bab97519, type: 3}
