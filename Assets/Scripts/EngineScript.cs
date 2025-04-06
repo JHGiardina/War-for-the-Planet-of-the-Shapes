@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class EngineScript : MonoBehaviour
 {
@@ -7,11 +8,13 @@ public class EngineScript : MonoBehaviour
     public WaveManager WaveManager;
     public CameraBehavior Camera;
 
+    public int waitTimeBetweenRounds = 2;
     public static int curCount = 45; 
     public static int curPop = 0;
     private float curPopInt = 0f;
 
     private int waveNumber;
+    private bool isWaiting = false;
     
     void Start()
     {
@@ -20,9 +23,9 @@ public class EngineScript : MonoBehaviour
 
     void Update()
     {
-        if(GetNumberOfHumans() <= 0)
+        if(CountHumans() <= 0 && isWaiting == false)
         {
-            TransitionRound();
+            StartTransitionRound();
         }
         
         curPopInt += Time.deltaTime;
@@ -39,16 +42,43 @@ public class EngineScript : MonoBehaviour
         return count;
     }
 
+    private void StartTransitionRound()
+    {
+        // User loses control during round transitions 
+        Camera.IsUserControllable = false;
+
+        Camera.CameraToRoundTextPosition();
+
+        waveNumber++;
+
+        RoundText.enabled = true;
+        RoundText.text = "Round " + waveNumber;
+        StartCoroutine(WaitRoundTextAndTransition());
+    }    
+
     private void TransitionRound()
     {
-        waveNumber++;
-        RoundText.text = "Round " + waveNumber;
+
+        Camera.ReturnCameraToPreviousPosition();
         WaveManager.SpawnWave();
+        
+        RoundText.enabled = false;
+
+        // User regains control (must also wait for transition to finish)
+        Camera.IsUserControllable = true;
     }
 
-    private int GetNumberOfHumans()
+    private int CountHumans()
     {
         BaseHumanUnitBehaviour[] aliveHumans = GameObject.FindObjectsByType<BaseHumanUnitBehaviour>(FindObjectsSortMode.None);
         return aliveHumans.Length;
+    }
+
+    private IEnumerator WaitRoundTextAndTransition()
+    {
+        isWaiting = true;
+        yield return new WaitForSeconds(waitTimeBetweenRounds);
+        TransitionRound();
+        isWaiting = false;
     }
 }

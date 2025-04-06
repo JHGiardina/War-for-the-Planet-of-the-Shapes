@@ -9,16 +9,15 @@ public class PrismUnitBehaviour : MonoBehaviour
     public float AttackCooldown = 2;
     public float LaserVisibilityTime = 0.5f;
     [HideInInspector] public Collider Collider;
+    [HideInInspector] public NavMeshAgent navMeshAgent;
 
     [SerializeField] GameObject DeathExplosion;
     [SerializeField] GameObject SpawnExplosion;
     [SerializeField] GameObject WayPointObject;
-
-    private NavMeshAgent navMeshAgent;
+    
     private float timeLastAttack;
     private float timeLastLaser;
     private LineRenderer laser;
-    private Vector3 targetPosition;
     private int layerMask;
     private float curTime = 0f;
 
@@ -55,12 +54,6 @@ public class PrismUnitBehaviour : MonoBehaviour
         if(laser.enabled && (timeSinceLastLaser >= LaserVisibilityTime))
         {
             laser.enabled = false;
-        }
-
-        // Move Units towards mouse when 
-        if (Input.GetMouseButtonDown(1))
-        {
-            MoveUnitsTowardsMouseRay();
         }
     }
     
@@ -112,30 +105,6 @@ public class PrismUnitBehaviour : MonoBehaviour
         }
     }
 
-    private void MoveUnitsTowardsMouseRay()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit))
-        {
-            targetPosition = hit.point;
-
-            // Destroy previous waypoints
-            WaypointBehaviour[] previousWayPoints = Object.FindObjectsByType<WaypointBehaviour>(FindObjectsSortMode.None);
-            foreach(WaypointBehaviour previousWayPoint in previousWayPoints)
-            {
-                Destroy(previousWayPoint.gameObject);
-            }
-
-            //Spawn waypoint marker 
-            // 3d pivot is placed wrong so I have to translate it up when spawning (I'll fix it in blender later)
-            Vector3 waypointPosition = targetPosition + new Vector3(0, 4, 0);
-            var waypointObject = Instantiate(WayPointObject, waypointPosition, Quaternion.identity);
-            Destroy(waypointObject, 3);
-            
-            navMeshAgent.SetDestination(targetPosition);
-        }
-    }
-
     private void DrawLaser(Vector3 target)
     {
         timeLastLaser = Time.time;
@@ -155,7 +124,8 @@ public class PrismUnitBehaviour : MonoBehaviour
                 EngineScript.curCount += collection.extractAmt;
                 curTime = 0f;
 
-            }else
+            }
+            else
             {
                 curTime += Time.deltaTime;
             }
