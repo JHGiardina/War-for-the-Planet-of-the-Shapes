@@ -17,6 +17,9 @@ public class MeleeUnitBehaviour : BaseHumanUnitBehaviour
 
         navMeshAgent.speed = BaseSpeed;
         timeLastAttack = float.NegativeInfinity;
+
+        // Hard coded the order and amount of audio sources in prefab
+        AudioSource[] audioSources = GetComponents<AudioSource>();
     }
 
     public override void Hit()

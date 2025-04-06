@@ -70,10 +70,15 @@ public abstract class BaseHumanUnitBehaviour : MonoBehaviour
         
         if(Health <= 0)
         {
-            var explosionVfx = Instantiate(DeathExplosion, transform.position, Quaternion.identity);
-            Destroy(explosionVfx, 3);
-            Destroy(gameObject);
+            OnDeath();
         }
+    }
+
+    public virtual void OnDeath()
+    {
+        var explosionVfx = Instantiate(DeathExplosion, transform.position, Quaternion.identity);
+        Destroy(explosionVfx, 3);
+        Destroy(gameObject);
     }
 
     // Set target to be a random human

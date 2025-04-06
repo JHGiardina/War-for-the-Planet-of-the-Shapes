@@ -14,7 +14,8 @@ public class RangeUnitBehaviour : BaseHumanUnitBehaviour
     private float timeLastAttack;
     private float timeLastLaser;
     private LineRenderer laser;
-    
+
+    private AudioSource laserSound;
 
     // Layer mask to ignore self collisions
     private int layerMask;
@@ -30,6 +31,10 @@ public class RangeUnitBehaviour : BaseHumanUnitBehaviour
 
         // Do collisions with everything but the Human layer
         layerMask = ~LayerMask.GetMask("Human");
+
+        // Hard coded the order and amount of audio sources in prefab
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        laserSound = audioSources[0];
     }
 
     public override void Update()
@@ -68,16 +73,17 @@ public class RangeUnitBehaviour : BaseHumanUnitBehaviour
                     {
                         // Shoot Laser Logic
                         Vector3 targetPosiion = lineHit.collider.bounds.center;
-
                         DrawLaser(targetPosiion);
                         timeLastAttack = Time.time;
                         prism.OnHit(AttackDamage);
+                        laserSound.Play();
                         break;
                     }
                 }
             }
         }
     }
+
 
     private void DrawLaser(Vector3 target)
     {

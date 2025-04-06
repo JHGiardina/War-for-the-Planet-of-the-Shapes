@@ -21,15 +21,17 @@ public class PrismUnitBehaviour : MonoBehaviour
     private int layerMask;
     private float curTime = 0f;
 
-    //public GameObject gameEngine;
-    //private EngineScript engine;
+    private AudioSource laserSound;
 
     private void Awake()
     {
         Collider = GetComponent<Collider>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         laser = GetComponent<LineRenderer>();
-        //engine = gameEngine.GetComponent<EngineScript>();
+        
+        // Hard coded the order and amount of audio sources in prefab
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        laserSound = audioSources[0];
     }
 
     private void Start()
@@ -86,6 +88,7 @@ public class PrismUnitBehaviour : MonoBehaviour
                         DrawLaser(human.transform.position);
                         timeLastAttack = Time.time;
                         human.OnHit(AttackDamage);
+                        laserSound.Play();
                         break;
                     }
                 }
