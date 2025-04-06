@@ -204,9 +204,9 @@ MonoBehaviour:
   Health: 500
   DeathExplosion: {fileID: 6077638792615033397, guid: b4f1aff922dcf3c4f83269128af8fad0, type: 3}
   Collider: {fileID: 0}
-  AttackRange: 40
+  AttackRange: 35
   AttackDamage: 100
-  AttackCooldown: 2
+  AttackCooldown: 3
   LaserVisibilityTime: 1
   BaseSpeed: 1.5
 --- !u!95 &4922097457922357828
@@ -244,7 +244,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 14abc32f15690c84a968c2572510e5a6, type: 3}
   m_Resource: {fileID: 8300000, guid: 14abc32f15690c84a968c2572510e5a6, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.9
   m_Pitch: 1
   Loop: 0
   Mute: 0

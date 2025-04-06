@@ -22,6 +22,7 @@ public class PrismUnitBehaviour : MonoBehaviour
     private float curTime = 0f;
 
     private AudioSource laserSound;
+    private AudioSource spawnSound;
 
     private void Awake()
     {
@@ -31,7 +32,8 @@ public class PrismUnitBehaviour : MonoBehaviour
         
         // Hard coded the order and amount of audio sources in prefab
         AudioSource[] audioSources = GetComponents<AudioSource>();
-        laserSound = audioSources[0];
+        spawnSound = audioSources[0];
+        laserSound = audioSources[1];
     }
 
     private void Start()
@@ -42,6 +44,8 @@ public class PrismUnitBehaviour : MonoBehaviour
         // Do collisions with everything but the Prism layer
         layerMask = ~LayerMask.GetMask("Prism");
 
+        // Spawn visual and sound effects
+        spawnSound.Play();
         var spawnExplosion = Instantiate(SpawnExplosion, transform.position, Quaternion.identity);
         Destroy(spawnExplosion, 1);
     }
