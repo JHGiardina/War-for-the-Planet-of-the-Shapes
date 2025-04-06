@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public abstract class BaseHumanUnitBehaviour : MonoBehaviour
 {
     public float Health = 100;
+    //public float MinApproachRadius = 0;
     public GameObject DeathExplosion;
     [HideInInspector] public Collider Collider;
 
@@ -49,6 +50,12 @@ public abstract class BaseHumanUnitBehaviour : MonoBehaviour
         }
         else
         {
+            // Jittering and glitchy should use raycasts instead 
+            // Don't let the prism move closer than a specific radius
+            //Vector3 humanToPrismDirection = (prismTarget.transform.position  - transform.position).normalized;
+            //Vector3 targetPosition = prismTarget.transform.position - (MinApproachRadius * humanToPrismDirection);
+            //navMeshAgent.SetDestination(targetPosition);
+
             navMeshAgent.SetDestination(prismTarget.transform.position);
         }
 
