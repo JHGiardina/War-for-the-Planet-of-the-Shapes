@@ -9,6 +9,7 @@ TagManager:
   - Collector
   - FxTemporaire
   - Prism Terrain
+  - PrismBase
   layers:
   - Default
   - TransparentFX

@@ -1096,7 +1096,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 604359162}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1323943688
+--- !u!1001 &1722700273
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1106,15 +1106,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2791969186700520233, guid: 80e809dc7a09f45da87b0a6ae1f65ebc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.387644
+      value: 19.17
       objectReference: {fileID: 0}
     - target: {fileID: 2791969186700520233, guid: 80e809dc7a09f45da87b0a6ae1f65ebc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2791969186700520233, guid: 80e809dc7a09f45da87b0a6ae1f65ebc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.20792
+      value: -22.6
       objectReference: {fileID: 0}
     - target: {fileID: 2791969186700520233, guid: 80e809dc7a09f45da87b0a6ae1f65ebc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1142,10 +1142,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2791969186700520233, guid: 80e809dc7a09f45da87b0a6ae1f65ebc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7175577500259024241, guid: 80e809dc7a09f45da87b0a6ae1f65ebc, type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8973665682119063572, guid: 80e809dc7a09f45da87b0a6ae1f65ebc, type: 3}
@@ -1679,6 +1675,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnUnit: {fileID: 873835107319111430, guid: 750c157501bae234fa1bb2b45c75c1a3, type: 3}
+  WayPointObject: {fileID: 0}
+  RoundTextCameraLocation: {fileID: 0}
+  transitionTime: 2
+  IsUserControllable: 0
+  isTransitioning: 0
 --- !u!1001 &9196650046324105833
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1796,5 +1797,5 @@ SceneRoots:
   - {fileID: 856461721}
   - {fileID: 1196739052}
   - {fileID: 604359162}
-  - {fileID: 1323943688}
   - {fileID: 330321433}
+  - {fileID: 1722700273}
