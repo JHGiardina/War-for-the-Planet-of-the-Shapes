@@ -5,18 +5,27 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 19bd30b8b89fe403b9cc6978ca4b778c
   - enabled: 1
-    path: Assets/Scenes/BattleMap.unity
-    guid: 7e6d3f4e5d896154ab4438845532ac3e
+    path: Assets/Scenes/DifficultySelect.unity
+    guid: 516913d71e894483cab685a81c29f7b2
   - enabled: 1
     path: Assets/Scenes/SettingsMenu.unity
     guid: 34040d200944d4a99a1a83a738c11fc7
+  - enabled: 1
+    path: Assets/Scenes/BattleMap.unity
+    guid: 7e6d3f4e5d896154ab4438845532ac3e
+  - enabled: 1
+    path: Assets/Scenes/VictoryScene.unity
+    guid: ba54cb8dabb8a4816adff1623ae1fdc0
+  - enabled: 1
+    path: Assets/Scenes/DefeatScene.unity
+    guid: e104ff21d7bab4458a19e68d0b681554
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
