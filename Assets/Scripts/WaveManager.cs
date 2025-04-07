@@ -8,6 +8,7 @@ public class WaveManager : MonoBehaviour
     public Transform[] SpawnPoints;
     public float TimeBetweenWaves = 5f;
     public int EnemiesPerWave = 5;
+    public int WaveNumber;
 
     // Probability a tanked is spawned is tankSpawnFactor / (tankSpawnFactor + rangedSpawnFact + meleeSpawnFactor)
     public int tankSpawnFactor = 1;
@@ -15,6 +16,8 @@ public class WaveManager : MonoBehaviour
     public int meleeSpawnFactor = 5;
 
     private float countdown = 0f;
+
+
 
     void Update()
     {
@@ -30,7 +33,7 @@ public class WaveManager : MonoBehaviour
 
     public void SpawnWave()
     {
-        EngineScript.curRound += 1;
+        WaveNumber += 1;
         for (int i = 0; i < EnemiesPerWave; i++)
         {
             SpawnEnemy();
