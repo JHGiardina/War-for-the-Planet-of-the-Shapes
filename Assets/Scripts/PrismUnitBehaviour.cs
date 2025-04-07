@@ -66,12 +66,8 @@ public class PrismUnitBehaviour : MonoBehaviour
         // Attempt to hit by checking if enemy is in range
         Hit();
 
-        // Remove any old lasers
-        float timeSinceLastLaser = Time.time - timeLastLaser;
-        if(laser.enabled && (timeSinceLastLaser >= LaserVisibilityTime))
-        {
-            laser.enabled = false;
-        }
+        RemoveOldLasers();
+
     }
     
     public void Hit()
@@ -155,7 +151,14 @@ public class PrismUnitBehaviour : MonoBehaviour
         }
     }
 
-
+    private void RemoveOldLasers()
+    {
+        float timeSinceLastLaser = Time.time - timeLastLaser;
+        if(laser.enabled && (timeSinceLastLaser >= LaserVisibilityTime))
+        {
+            laser.enabled = false;
+        }
+    }
 
 }
 
