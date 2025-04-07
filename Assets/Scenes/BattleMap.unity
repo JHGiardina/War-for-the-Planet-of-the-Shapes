@@ -16846,15 +16846,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2715859182832996091, guid: bee83f53989a14693a858163f49ce492, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.14
+      value: 17.3
       objectReference: {fileID: 0}
     - target: {fileID: 2715859182832996091, guid: bee83f53989a14693a858163f49ce492, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.27
+      value: 0.17
       objectReference: {fileID: 0}
     - target: {fileID: 2715859182832996091, guid: bee83f53989a14693a858163f49ce492, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -71.32
+      value: -72.4
       objectReference: {fileID: 0}
     - target: {fileID: 2715859182832996091, guid: bee83f53989a14693a858163f49ce492, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16891,8 +16891,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4227659685724345884, guid: bee83f53989a14693a858163f49ce492, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 167376879790311060}
   m_SourcePrefab: {fileID: 100100000, guid: bee83f53989a14693a858163f49ce492, type: 3}
+--- !u!1 &167376879790311059 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4227659685724345884, guid: bee83f53989a14693a858163f49ce492, type: 3}
+  m_PrefabInstance: {fileID: 167376879790311058}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &167376879790311060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167376879790311059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fd9792b3b18e73448790019750b1537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackRange: 30
+  AttackDamage: 50
+  Health: 100
+  AttackCooldown: 2
+  LaserVisibilityTime: 0.5
+  Collider: {fileID: 0}
+  navMeshAgent: {fileID: 0}
+  DeathExplosion: {fileID: 0}
+  SpawnExplosion: {fileID: 0}
+  WayPointObject: {fileID: 0}
 --- !u!1001 &6900086908182003342
 PrefabInstance:
   m_ObjectHideFlags: 0
