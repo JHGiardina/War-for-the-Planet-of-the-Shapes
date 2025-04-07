@@ -18276,15 +18276,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2715859182832996091, guid: bee83f53989a14693a858163f49ce492, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.3
+      value: 18.71
       objectReference: {fileID: 0}
     - target: {fileID: 2715859182832996091, guid: bee83f53989a14693a858163f49ce492, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.21
+      value: 3.54
       objectReference: {fileID: 0}
     - target: {fileID: 2715859182832996091, guid: bee83f53989a14693a858163f49ce492, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -72.4
+      value: -75.65
       objectReference: {fileID: 0}
     - target: {fileID: 2715859182832996091, guid: bee83f53989a14693a858163f49ce492, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18316,7 +18316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4227659685723994782, guid: bee83f53989a14693a858163f49ce492, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.46
+      value: -0.84
       objectReference: {fileID: 0}
     - target: {fileID: 4227659685724345884, guid: bee83f53989a14693a858163f49ce492, type: 3}
       propertyPath: m_TagString
@@ -18359,9 +18359,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackRange: 30
-  AttackDamage: 50
+  AttackDamage: 10
   Health: 1000
-  AttackCooldown: 2
+  AttackCooldown: 0.3
   LaserVisibilityTime: 0.5
   Collider: {fileID: 0}
   navMeshAgent: {fileID: 0}
