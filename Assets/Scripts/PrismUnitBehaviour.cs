@@ -32,8 +32,12 @@ public class PrismUnitBehaviour : MonoBehaviour
         
         // Hard coded the order and amount of audio sources in prefab
         AudioSource[] audioSources = GetComponents<AudioSource>();
-        spawnSound = audioSources[0];
-        laserSound = audioSources[1];
+        if(audioSources.Length == 2)
+        {
+            spawnSound = audioSources[0];
+            laserSound = audioSources[1];
+        }
+
     }
 
     private void Start()
@@ -45,9 +49,16 @@ public class PrismUnitBehaviour : MonoBehaviour
         layerMask = ~LayerMask.GetMask("Prism");
 
         // Spawn visual and sound effects
-        spawnSound.Play();
-        var spawnExplosion = Instantiate(SpawnExplosion, transform.position, Quaternion.identity);
-        Destroy(spawnExplosion, 1);
+        if(spawnSound != null)
+        {
+            spawnSound.Play();
+        }
+        
+        if(SpawnExplosion != null)
+        {
+            var spawnExplosion = Instantiate(SpawnExplosion, transform.position, Quaternion.identity);
+            Destroy(spawnExplosion, 1);
+        }
     }
         
     private void Update()
@@ -55,12 +66,8 @@ public class PrismUnitBehaviour : MonoBehaviour
         // Attempt to hit by checking if enemy is in range
         Hit();
 
-        // Remove any old lasers
-        float timeSinceLastLaser = Time.time - timeLastLaser;
-        if(laser.enabled && (timeSinceLastLaser >= LaserVisibilityTime))
-        {
-            laser.enabled = false;
-        }
+        RemoveOldLasers();
+
     }
     
     public void Hit()
@@ -92,7 +99,10 @@ public class PrismUnitBehaviour : MonoBehaviour
                         DrawLaser(human.transform.position);
                         timeLastAttack = Time.time;
                         human.OnHit(AttackDamage);
-                        laserSound.Play();
+                        if(laserSound != null)
+                        {
+                            laserSound.Play();
+                        }
                         break;
                     }
                 }
@@ -105,9 +115,12 @@ public class PrismUnitBehaviour : MonoBehaviour
         Health -= damage;
         if(Health <= 0)
         {
-            var explosionVfx = Instantiate(DeathExplosion, transform.position, Quaternion.identity);
-            Destroy(explosionVfx, 1);
-            Destroy(gameObject);
+            if(DeathExplosion != null)
+            {
+                var explosionVfx = Instantiate(DeathExplosion, transform.position, Quaternion.identity);
+                Destroy(explosionVfx, 1);
+                Destroy(gameObject);
+            }
             EngineScript.curPop -= 1;
         }
     }
@@ -124,7 +137,6 @@ public class PrismUnitBehaviour : MonoBehaviour
     {
         if(other.CompareTag("Collector"))
         {
-
             Collection collection = other.GetComponent<Collection>();
             if(curTime >= collection.extractRate)
             {
@@ -139,7 +151,14 @@ public class PrismUnitBehaviour : MonoBehaviour
         }
     }
 
-
+    private void RemoveOldLasers()
+    {
+        float timeSinceLastLaser = Time.time - timeLastLaser;
+        if(laser.enabled && (timeSinceLastLaser >= LaserVisibilityTime))
+        {
+            laser.enabled = false;
+        }
+    }
 
 }
 

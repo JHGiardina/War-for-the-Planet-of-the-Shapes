@@ -16,7 +16,7 @@ public class PrismBase : MonoBehaviour
     {
         if (prismBehavior.Health <= 0)
         {
-                        SceneManager.LoadScene("DefeatScene");
+            SceneManager.LoadScene("DefeatScene");
         }
     }
 }
