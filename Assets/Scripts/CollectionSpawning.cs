@@ -1,4 +1,5 @@
 using UnityEngine;
+
 using System.Collections;
 
 public class CollectionSpawning : MonoBehaviour
@@ -7,9 +8,6 @@ public class CollectionSpawning : MonoBehaviour
 
     public Transform[] a_spawnLoc;
     public Transform self;
-
-
-
 
     public int numCollectors;
     
