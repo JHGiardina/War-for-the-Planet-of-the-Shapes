@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
 public class EngineScript : MonoBehaviour
 {
@@ -9,17 +8,14 @@ public class EngineScript : MonoBehaviour
     public WaveManager WaveManager;
     public CameraBehavior Camera;
 
-
+    public int waitTimeBetweenRounds = 2;
     public static int curCount = 45; 
     public static int curPop = 0;
-    private float curPopInt = 0f;
-    public static int curRound = 0;
+    public static int curHumanPop = 0;
+    public static int waveNumber;
 
-    private int waveNumber;
+    private float curPopInt = 0f;
     private bool isWaiting = false;
-    [Header("Settings ")]
-    public int waitTimeBetweenRounds = 2;
-    public int finalRoundNumber = 10;
     
     void Start()
     {
@@ -28,11 +24,8 @@ public class EngineScript : MonoBehaviour
 
     void Update()
     {
-        if (curRound > finalRoundNumber)
-        {
-            SceneManager.LoadScene("VictoryScene");
-        }
-        if(CountHumans() <= 0 && isWaiting == false)
+        curHumanPop  = CountHumans();
+        if(curHumanPop <= 0 && isWaiting == false)
         {
             StartTransitionRound();
         }

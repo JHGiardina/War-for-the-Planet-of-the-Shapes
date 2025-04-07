@@ -160,7 +160,6 @@ public class CameraBehavior : MonoBehaviour
         Camera.main.transform.rotation = targetRotation;
 
         isTransitioning = false;
-        
 
     }
 }
