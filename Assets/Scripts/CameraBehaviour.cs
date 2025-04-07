@@ -108,7 +108,10 @@ public class CameraBehavior : MonoBehaviour
             // move units toward new waypoint
             foreach(PrismUnitBehaviour prism in prisms)
             {
-                prism.navMeshAgent.SetDestination(hit.point);
+                if(!prism.IsBase)
+                {
+                    prism.navMeshAgent.SetDestination(hit.point);
+                }
             }
             
         }        
