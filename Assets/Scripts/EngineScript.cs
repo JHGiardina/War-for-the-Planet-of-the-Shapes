@@ -11,9 +11,10 @@ public class EngineScript : MonoBehaviour
     public int waitTimeBetweenRounds = 2;
     public static int curCount = 45; 
     public static int curPop = 0;
-    private float curPopInt = 0f;
+    public static int curHumanPop = 0;
+    public static int waveNumber;
 
-    public int waveNumber;
+    private float curPopInt = 0f;
     private bool isWaiting = false;
     
     void Start()
@@ -23,7 +24,8 @@ public class EngineScript : MonoBehaviour
 
     void Update()
     {
-        if(CountHumans() <= 0 && isWaiting == false)
+        curHumanPop  = CountHumans();
+        if(curHumanPop <= 0 && isWaiting == false)
         {
             StartTransitionRound();
         }
