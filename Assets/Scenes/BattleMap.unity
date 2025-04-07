@@ -16850,7 +16850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2715859182832996091, guid: bee83f53989a14693a858163f49ce492, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.17
+      value: 2.21
       objectReference: {fileID: 0}
     - target: {fileID: 2715859182832996091, guid: bee83f53989a14693a858163f49ce492, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16884,9 +16884,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4227659685723994782, guid: bee83f53989a14693a858163f49ce492, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227659685724345884, guid: bee83f53989a14693a858163f49ce492, type: 3}
+      propertyPath: m_TagString
+      value: Prism
+      objectReference: {fileID: 0}
     - target: {fileID: 8033715669228218373, guid: bee83f53989a14693a858163f49ce492, type: 3}
       propertyPath: m_Name
       value: Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033715669228218373, guid: bee83f53989a14693a858163f49ce492, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16915,7 +16927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackRange: 30
   AttackDamage: 50
-  Health: 100
+  Health: 1000
   AttackCooldown: 2
   LaserVisibilityTime: 0.5
   Collider: {fileID: 0}

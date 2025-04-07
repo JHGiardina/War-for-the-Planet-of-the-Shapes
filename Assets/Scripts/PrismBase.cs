@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class PrismBase : MonoBehaviour
 {
-    public PrismUnitBehaviour prismBehavior;
+    [HideInInspector] public PrismUnitBehaviour prismBehavior;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,7 +16,7 @@ public class PrismBase : MonoBehaviour
     {
         if (prismBehavior.Health <= 0)
         {
-            SceneManager.LoadScene("DefeatScene");
+                        SceneManager.LoadScene("DefeatScene");
         }
     }
 }
