@@ -30,6 +30,7 @@ public class WaveManager : MonoBehaviour
 
     public void SpawnWave()
     {
+        EngineScript.curRound += 1;
         for (int i = 0; i < EnemiesPerWave; i++)
         {
             SpawnEnemy();
