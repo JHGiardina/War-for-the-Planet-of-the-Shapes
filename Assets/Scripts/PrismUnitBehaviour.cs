@@ -8,6 +8,7 @@ public class PrismUnitBehaviour : MonoBehaviour
     public float Health = 100;
     public float AttackCooldown = 2;
     public float LaserVisibilityTime = 0.5f;
+    public bool IsBase = false;
     [HideInInspector] public Collider Collider;
     [HideInInspector] public NavMeshAgent navMeshAgent;
 
@@ -37,7 +38,6 @@ public class PrismUnitBehaviour : MonoBehaviour
             spawnSound = audioSources[0];
             laserSound = audioSources[1];
         }
-
     }
 
     private void Start()
@@ -67,7 +67,6 @@ public class PrismUnitBehaviour : MonoBehaviour
         Hit();
 
         RemoveOldLasers();
-
     }
     
     public void Hit()
