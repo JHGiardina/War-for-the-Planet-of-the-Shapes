@@ -1,12 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public enum Difficulty
-{
-    Easy,
-    Medium,
-    Hard
-}
+public enum Difficulty {Easy, Medium, Hard}
 
 public class DifficultyManager : MonoBehaviour
 {

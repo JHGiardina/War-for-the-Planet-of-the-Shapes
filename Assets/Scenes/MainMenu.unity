@@ -215,9 +215,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 345689916}
+      - m_Target: {fileID: 345689918}
         m_TargetAssemblyTypeName: MenuBehavior, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: GoToDiffSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1816,8 +1816,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0025177, y: 0.000030518}
-  m_SizeDelta: {x: 1086.5, y: 503.5}
+  m_AnchoredPosition: {x: 0.011994, y: -0.00000011921}
+  m_SizeDelta: {x: 1144, y: 496}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2133843402
 MonoBehaviour:

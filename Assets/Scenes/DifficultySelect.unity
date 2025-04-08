@@ -268,7 +268,6 @@ GameObject:
   - component: {fileID: 151161808}
   - component: {fileID: 151161807}
   - component: {fileID: 151161806}
-  - component: {fileID: 151161810}
   m_Layer: 5
   m_Name: DifficultyHard
   m_TagString: Untagged
@@ -353,13 +352,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 151161804}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 2109320797}
+        m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
+        m_MethodName: UpdateDifficultyText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -403,20 +402,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 151161804}
   m_CullTransparentMesh: 1
---- !u!114 &151161810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 151161804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7875a88b18b3449b186790adfebbd1cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DifficultyLevel: 2
-  difficultyText: {fileID: 0}
 --- !u!1 &329196232
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,7 +1061,6 @@ GameObject:
   - component: {fileID: 940332158}
   - component: {fileID: 940332157}
   - component: {fileID: 940332156}
-  - component: {fileID: 940332160}
   m_Layer: 5
   m_Name: DifficultyMedium
   m_TagString: Untagged
@@ -1161,13 +1145,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 940332154}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 2109320797}
+        m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
+        m_MethodName: UpdateDifficultyText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1211,20 +1195,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940332154}
   m_CullTransparentMesh: 1
---- !u!114 &940332160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 940332154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7875a88b18b3449b186790adfebbd1cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DifficultyLevel: 1
-  difficultyText: {fileID: 0}
 --- !u!1 &972998313
 GameObject:
   m_ObjectHideFlags: 0
@@ -1754,7 +1724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7875a88b18b3449b186790adfebbd1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DifficultyLevel: 1
+  DifficultyLevel: 0
   difficultyText: {fileID: 1406329785}
 --- !u!1 &1629979485
 GameObject:
@@ -2180,7 +2150,6 @@ GameObject:
   - component: {fileID: 1895876464}
   - component: {fileID: 1895876463}
   - component: {fileID: 1895876462}
-  - component: {fileID: 1895876466}
   m_Layer: 5
   m_Name: DifficultyEasy
   m_TagString: Untagged
@@ -2265,13 +2234,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1895876460}
-        m_TargetAssemblyTypeName: MenuBehavior, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 2109320797}
+        m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
+        m_MethodName: UpdateDifficultyText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2315,20 +2284,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1895876460}
   m_CullTransparentMesh: 1
---- !u!114 &1895876466
+--- !u!1 &2109320796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2109320798}
+  - component: {fileID: 2109320797}
+  m_Layer: 0
+  m_Name: DifficultyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2109320797
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1895876460}
+  m_GameObject: {fileID: 2109320796}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7875a88b18b3449b186790adfebbd1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DifficultyLevel: 0
-  difficultyText: {fileID: 0}
+  difficultyText: {fileID: 1406329785}
+--- !u!4 &2109320798
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109320796}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.844167, y: -10.467215, z: 2.0539687}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2128961423
 GameObject:
   m_ObjectHideFlags: 0
@@ -2473,3 +2474,4 @@ SceneRoots:
   - {fileID: 1682950420}
   - {fileID: 1241058350}
   - {fileID: 1675425883}
+  - {fileID: 2109320798}
