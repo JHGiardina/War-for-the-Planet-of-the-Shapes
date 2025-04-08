@@ -14,6 +14,7 @@ public class TimePlayedTimer : MonoBehaviour
 
     private TimeSpan timePlaying;
     private bool timerRunning;
+    private float startTime;
 
     private float elapsedTime;
 

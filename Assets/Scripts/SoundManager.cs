@@ -37,6 +37,6 @@ public class SoundManager : MonoBehaviour
 
     private void Save()
     {
-        PlayerPrefs.SetFloat("MasterVolume"); // needs the name of all the audio
+        PlayerPrefs.SetFloat("MasterVolume", PlayerPrefs.GetFloat("MasterVolume")); // needs the name of all the audio
     }
 }
