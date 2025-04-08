@@ -9,16 +9,21 @@ public class EngineScript : MonoBehaviour
     public CameraBehavior Camera;
 
     public int waitTimeBetweenRounds = 2;
-    public static int curCount = 45; 
-    public static int curPop = 0;
-    public static int curHumanPop = 0;
-    public static int waveNumber;
+    public int passiveResourceAmount = 10;
+    public int passiveResourceRate = 5;
+
+    [HideInInspector] public static int curCount = 45; 
+    [HideInInspector] public static int curPop = 0;
+    [HideInInspector] public static int curHumanPop = 0;
+    [HideInInspector] public static int waveNumber;
 
     private float curPopInt = 0f;
     private bool isWaiting = false;
+    private float timeLastPassiveResource;
     
     void Start()
     {
+        timeLastPassiveResource = Time.time;
         waveNumber = 0;
     }
 
@@ -26,10 +31,14 @@ public class EngineScript : MonoBehaviour
     {
         curHumanPop = CountHumans();
         curPop = CountPrisms();
-
+        
         if(curHumanPop <= 0 && isWaiting == false)
         {
             StartTransitionRound();
+        } 
+        else
+        {
+            AddPassiveResources();
         }
     }
 
@@ -72,6 +81,16 @@ public class EngineScript : MonoBehaviour
     {
         BaseHumanUnitBehaviour[] aliveHumans = GameObject.FindObjectsByType<BaseHumanUnitBehaviour>(FindObjectsSortMode.None);
         return aliveHumans.Length;
+    }
+
+    private void AddPassiveResources()
+    {
+        float timeSinceLastPassiveResource = Time.time - timeLastPassiveResource;
+        if(timeSinceLastPassiveResource >= passiveResourceRate)
+        {
+            timeLastPassiveResource = Time.time;
+            curCount += passiveResourceAmount;
+        }
     }
 
     private IEnumerator WaitRoundTextAndTransition()
