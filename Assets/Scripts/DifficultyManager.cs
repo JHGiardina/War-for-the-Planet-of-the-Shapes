@@ -11,7 +11,7 @@ public enum Difficulty
 public class DifficultyManager : MonoBehaviour
 {
 
-    private static DifficultyManager _instance;
+    public static DifficultyManager _instance;
 
     public static DifficultyManager GetInstance()
     {
@@ -43,17 +43,17 @@ public class DifficultyManager : MonoBehaviour
         Debug.Log("Difficulty selected: " + diflvl);
     }
 
-    private void ApplyDifficulty(Difficulty level)
+    public void ApplyDifficulty(Difficulty level)
     {
         // game behavior here
         Debug.Log("Applying difficulty: " + level);
     }
 
-    private void UpdateDifficultyText()
+    public void UpdateDifficultyText()
     {
         if (difficultyText != null)
         {
-            difficultyText.text = "Current Difficulty: " + DifficultyLevel.ToString();
+            difficultyText.text = "Difficulty: " + DifficultyLevel.ToString();
         }
     }
 }
