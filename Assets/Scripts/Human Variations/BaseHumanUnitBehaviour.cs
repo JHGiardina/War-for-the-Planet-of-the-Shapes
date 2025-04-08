@@ -37,7 +37,8 @@ public abstract class BaseHumanUnitBehaviour : MonoBehaviour
         if (baseObj != null)
         {
             targetBase = baseObj;
-        }else
+        }
+        else
         {
             Debug.LogError($"[{name}] No GameObject with tag '{BASE_TAG}' found in scene!");
         }

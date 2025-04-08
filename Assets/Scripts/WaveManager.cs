@@ -17,8 +17,6 @@ public class WaveManager : MonoBehaviour
 
     private float countdown = 0f;
 
-
-
     void Update()
     {
         if(!SpawnAutomatically) return;
