@@ -13,6 +13,7 @@ public class CameraBehavior : MonoBehaviour
 
     private float zoomSpeedMouse;
     private float movementSpeed;
+    private float rotationSpeed;
 
     private Vector3 previousCameraPosition;
     private Quaternion previousCameraRotation;
@@ -27,6 +28,7 @@ public class CameraBehavior : MonoBehaviour
         movementSpeed = 20;
         zoomSpeedMouse = 30;
         isTransitioning = false;
+        rotationSpeed= 1000;
 
         // Layer masks so we can spawn way points in resources
         resourceLayerMask = ~LayerMask.GetMask("Resource");
@@ -40,6 +42,7 @@ public class CameraBehavior : MonoBehaviour
             HandleZoom();
             HandleUnitSpawn();
             HandleWayPoints();
+            HandleRotation();
         }
     }
 
@@ -71,19 +74,38 @@ public class CameraBehavior : MonoBehaviour
         EngineScript.curCount -= UnitSpawnCost;
     }
 
+    // Relative to where camera is facing
     private void HandlePosition()
     {
         float inputX = Input.GetAxisRaw("Horizontal"); 
         float inputZ = Input.GetAxisRaw("Vertical");
 
-        Vector3 movementDirection = new Vector3(inputX, 0, inputZ);
-        Camera.main.transform.position += movementSpeed * movementDirection * Time.deltaTime;
+        // Front and back movement
+        Vector3 cameraForwardDirection = Camera.main.transform.forward;
+        Vector3 forwardMovementDirection = new Vector3(cameraForwardDirection.x, 0, cameraForwardDirection.z).normalized;
+        Camera.main.transform.position += movementSpeed * forwardMovementDirection  * inputZ * Time.deltaTime;
+
+        // Right and Left movement
+        Vector3 cameraRightDirection = Camera.main.transform.right;
+        Vector3 rightMovementDirection = new Vector3(cameraRightDirection.x, 0, cameraRightDirection.z).normalized;
+        Camera.main.transform.position += movementSpeed * rightMovementDirection  * inputX * Time.deltaTime;
     }
 
     private void HandleZoom()
     {
         Vector3 cameraToOrign = Vector3.zero - Camera.main.transform.position;
         Camera.main.transform.position += zoomSpeedMouse * cameraToOrign * Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime;
+    }
+
+    private void HandleRotation()
+    {
+        // Rotate around the z y-axis when middle mouse is selected
+        if(Input.GetMouseButton(2))
+        {
+            float inputX = Input.GetAxis("Mouse X");
+            Vector3 yAxis = new Vector3(0, 1, 0);
+            transform.RotateAround(transform.position, yAxis, inputX * rotationSpeed * Time.deltaTime);
+        }
     }
 
     private void HandleWayPoints()

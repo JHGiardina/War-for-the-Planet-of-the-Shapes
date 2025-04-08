@@ -46,7 +46,6 @@ public class ResourceBehaviour : MonoBehaviour
                 // As Resources is collected resource becomes less visible
                 SetTransparency();
             }
-
         }
     }
 
