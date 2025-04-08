@@ -137,7 +137,7 @@ public class EngineScript : MonoBehaviour
         switch(difficulty)
         {
             case Difficulty.Easy:
-                maxRounds = 1;
+                maxRounds = 5;
                 break;
             case Difficulty.Medium:
                 maxRounds = 10;

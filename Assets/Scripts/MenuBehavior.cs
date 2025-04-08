@@ -12,6 +12,7 @@ public class MenuBehavior : MonoBehaviour
 
     public void GoToMenu()
     {
+        Debug.Log("menu");
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
