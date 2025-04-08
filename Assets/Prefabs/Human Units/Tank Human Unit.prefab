@@ -206,7 +206,7 @@ MonoBehaviour:
   Collider: {fileID: 0}
   detectionRadius: 10
   AttackRange: 35
-  AttackDamage: 100
+  AttackDamage: 300
   AttackCooldown: 3
   LaserVisibilityTime: 1
   BaseSpeed: 4
