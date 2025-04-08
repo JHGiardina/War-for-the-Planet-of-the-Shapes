@@ -19,12 +19,17 @@ public class CameraBehavior : MonoBehaviour
 
     private string SPAWNABLE_SURFACE_TAG = "Prism Terrain";
 
+    private int resourceLayerMask;
+
     void Start()
     {
         // Arbitrary speeds based on testing
         movementSpeed = 20;
         zoomSpeedMouse = 30;
         isTransitioning = false;
+
+        // Layer masks so we can spawn way points in resources
+        resourceLayerMask = ~LayerMask.GetMask("Resource");
     }
 
     void Update()
@@ -96,7 +101,7 @@ public class CameraBehavior : MonoBehaviour
 
         // Spawn WayPoint object and calculate position
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, resourceLayerMask))
         {
             // Destroy old waypoints
             WaypointBehaviour[] previousWayPoints = Object.FindObjectsByType<WaypointBehaviour>(FindObjectsSortMode.None);

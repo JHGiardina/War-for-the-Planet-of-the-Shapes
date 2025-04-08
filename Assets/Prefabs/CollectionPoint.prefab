@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -987943302980451363}
   - component: {fileID: 5199480215515962222}
   - component: {fileID: 6760869765225101045}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CollectionPoint
   m_TagString: Collector
   m_Icon: {fileID: 0}
@@ -109,8 +109,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.4148854, z: 1}
-  m_Center: {x: 0, y: 0.9444862, z: 0}
+  m_Size: {x: 1.5592297, y: 2.5423417, z: 1.6032836}
+  m_Center: {x: 0.05125239, y: 0.81531125, z: -0.0041031716}
 --- !u!114 &-987943302980451363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ccd5dc5c0dff564c88341a130979d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalExtractAmt: 30
   extractAmt: 10
   extractRate: 2
 --- !u!82 &5199480215515962222

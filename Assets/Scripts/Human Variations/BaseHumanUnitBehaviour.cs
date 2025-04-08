@@ -7,7 +7,6 @@ using System.Linq;
 public abstract class BaseHumanUnitBehaviour : MonoBehaviour
 {
     public float Health = 100;
-    //public float MinApproachRadius = 0;
     public GameObject DeathExplosion;
     [HideInInspector] public Collider Collider;
 
@@ -75,23 +74,6 @@ public abstract class BaseHumanUnitBehaviour : MonoBehaviour
 
         navMeshAgent.SetDestination(prismTarget.transform.position);
 
-         // Get a human target if we don't have one or its dead else move towards human target
-        // if(prismTarget == null)
-        // {
-        //     FindPrismTarget();
-        // }
-        // else
-        // {
-        //     // Jittering and glitchy should use raycasts instead 
-        //     // Don't let the prism move closer than a specific radius
-        //     //Vector3 humanToPrismDirection = (prismTarget.transform.position  - transform.position).normalized;
-        //     //Vector3 targetPosition = prismTarget.transform.position - (MinApproachRadius * humanToPrismDirection);
-        //     //navMeshAgent.SetDestination(targetPosition);
-
-        //     navMeshAgent.SetDestination(prismTarget.transform.position);
-        // }
-
-        //Debug.Log(navMeshAgent.velocity.magnitude);
         if(navMeshAgent.velocity.magnitude >= 0 && animator != null)
         {
             animator.SetBool("Run", true);
