@@ -24,24 +24,22 @@ public class EngineScript : MonoBehaviour
 
     void Update()
     {
-        curHumanPop  = CountHumans();
+        curHumanPop = CountHumans();
+        curPop = CountPrisms();
+
         if(curHumanPop <= 0 && isWaiting == false)
         {
             StartTransitionRound();
-        }
-        
-        curPopInt += Time.deltaTime;
-        if (curPopInt >= 5)
-        {
-            curPop = CountPrisms();
-            curPopInt = 0;
         }
     }
 
     private int CountPrisms()
     {
-        int count = GameObject.FindGameObjectsWithTag("Prism").Length;
-        return count;
+        PrismUnitBehaviour[] prisms = GameObject.FindObjectsByType<PrismUnitBehaviour>(FindObjectsSortMode.None);
+
+        // minus 1 b/c presumably there is a base which is a prism unit
+        int prismCount = prisms.Length - 1;
+        return prismCount;
     }
 
     private void StartTransitionRound()

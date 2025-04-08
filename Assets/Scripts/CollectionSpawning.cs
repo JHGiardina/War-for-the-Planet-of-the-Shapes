@@ -28,12 +28,7 @@ public class CollectionSpawning : MonoBehaviour
         }     
     }
 
-    // Update is called once per frame
-    void Update()
-    {
- 
-    }
-        IEnumerator SpawnCollectors()
+    private IEnumerator SpawnCollectors()
     {
        for (int i = 0; i <= numCollectors; i++ )
             {

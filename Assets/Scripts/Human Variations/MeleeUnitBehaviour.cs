@@ -35,6 +35,7 @@ public class MeleeUnitBehaviour : BaseHumanUnitBehaviour
             PrismUnitBehaviour prism;
             if(hit.gameObject.TryGetComponent<PrismUnitBehaviour>(out prism))
             {
+                timeLastAttack = Time.time;
                 prism.OnHit(AttackDamage);
                 break;
             }

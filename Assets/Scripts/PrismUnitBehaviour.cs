@@ -19,6 +19,7 @@ public class PrismUnitBehaviour : MonoBehaviour
     private float timeLastAttack;
     private float timeLastLaser;
     private LineRenderer laser;
+    private UnitHealthBar healthBar;
     private int layerMask;
     private float curTime = 0f;
 
@@ -30,6 +31,7 @@ public class PrismUnitBehaviour : MonoBehaviour
         Collider = GetComponent<Collider>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         laser = GetComponent<LineRenderer>();
+        healthBar = GetComponentInChildren<UnitHealthBar>();
         
         // Hard coded the order and amount of audio sources in prefab
         AudioSource[] audioSources = GetComponents<AudioSource>();
@@ -47,12 +49,6 @@ public class PrismUnitBehaviour : MonoBehaviour
 
         // Do collisions with everything but the Prism layer
         layerMask = ~LayerMask.GetMask("Prism");
-
-        // Spawn visual and sound effects
-        if(spawnSound != null)
-        {
-            spawnSound.Play();
-        }
         
         if(SpawnExplosion != null)
         {
@@ -112,6 +108,8 @@ public class PrismUnitBehaviour : MonoBehaviour
     public void OnHit(float damage)
     {
         Health -= damage;
+        healthBar.CurrentHealth = Health;
+
         if(Health <= 0)
         {
             if(DeathExplosion != null)
@@ -120,7 +118,6 @@ public class PrismUnitBehaviour : MonoBehaviour
                 Destroy(explosionVfx, 1);
                 Destroy(gameObject);
             }
-            EngineScript.curPop -= 1;
         }
     }
 
@@ -132,6 +129,8 @@ public class PrismUnitBehaviour : MonoBehaviour
         laser.SetPosition(0, laserBeginPosition);
         laser.SetPosition(1, target);
     }
+
+    /*
     private void OnTriggerStay(Collider other)
     {
         if(other.CompareTag("Collector"))
@@ -149,6 +148,7 @@ public class PrismUnitBehaviour : MonoBehaviour
             }
         }
     }
+    */
 
     private void RemoveOldLasers()
     {
