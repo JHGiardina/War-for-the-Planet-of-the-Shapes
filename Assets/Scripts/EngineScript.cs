@@ -77,9 +77,12 @@ public class EngineScript : MonoBehaviour
         Debug.Log("transition");
 
         // Check if the user won the game
-        if(waveNumber >= maxRounds && !isVictory)
+        if(waveNumber >= maxRounds)
         {
-            StartCoroutine(WaitForSoundAndTransition("VictoryScene"));
+            if(!isVictory)
+            {
+                StartCoroutine(WaitForSoundAndTransition("VictoryScene"));
+            }
             return;
         }
 
