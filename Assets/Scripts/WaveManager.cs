@@ -31,7 +31,6 @@ public class WaveManager : MonoBehaviour
 
     public void SpawnWave()
     {
-        EngineScript.waveNumber++;
         for (int i = 0; i < EnemiesPerWave; i++)
         {
             SpawnEnemy();

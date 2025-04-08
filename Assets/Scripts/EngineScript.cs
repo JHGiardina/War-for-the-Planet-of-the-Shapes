@@ -18,14 +18,34 @@ public class EngineScript : MonoBehaviour
     [HideInInspector] public static int curHumanPop = 0;
     [HideInInspector] public static int waveNumber;
 
-    private bool isWaiting = false;
+    private bool isWaiting;
+    private bool isVictory;
     private float timeLastPassiveResource;
+    private Difficulty difficulty; 
+    private int maxRounds;
+    private AudioSource victorySound;
     
     void Start()
     {
-        MainMenuAudio.Audio.Stop();
+        // Get/Change state of Singleton Classes
+        if(MainMenuAudio.Audio != null)
+        {
+            MainMenuAudio.Audio.Stop();
+        }
+
+        // Get Difficulty from persistent singleton
+        SetDifficulty();
+
+        Debug.Log(difficulty);
+        
+        victorySound = GetComponent<AudioSource>();
         timeLastPassiveResource = Time.time;
         waveNumber = 0;
+        curCount = 45;
+        curPop = 0;
+        curHumanPop = 0;
+        isVictory = false;
+        isWaiting = false;
     }
 
     void Update()
@@ -54,14 +74,21 @@ public class EngineScript : MonoBehaviour
 
     private void StartTransitionRound()
     {
+        Debug.Log("transition");
+
+        // Check if the user won the game
+        if(waveNumber >= maxRounds && !isVictory)
+        {
+            StartCoroutine(WaitForSoundAndTransition("VictoryScene"));
+            return;
+        }
+
         // User loses control during round transitions 
         Camera.IsUserControllable = false;
-
         Camera.CameraToRoundTextPosition();
-
-        waveNumber++;
-
+        Debug.Log("Wave number" + waveNumber);
         RoundText.enabled = true;
+        waveNumber++;
         RoundText.text = "Round " + waveNumber;
         StartCoroutine(WaitRoundTextAndTransition());
     }    
@@ -73,7 +100,6 @@ public class EngineScript : MonoBehaviour
         WaveManager.SpawnWave();
         collectionSpawner.ResetCollectors();
 
-        
         RoundText.enabled = false;
 
         // User regains control (must also wait for transition to finish)
@@ -96,11 +122,48 @@ public class EngineScript : MonoBehaviour
         }
     }
 
+    private void SetDifficulty()
+    {
+        // Get data from singleton difficulty manager
+        if(DifficultyManager.DifficultyLevel == null)
+        {
+            difficulty = Difficulty.Easy;
+        }
+        else
+        {
+            difficulty = DifficultyManager.DifficultyLevel;
+        }
+
+        switch(difficulty)
+        {
+            case Difficulty.Easy:
+                maxRounds = 1;
+                break;
+            case Difficulty.Medium:
+                maxRounds = 10;
+                break;
+            case Difficulty.Hard:
+                maxRounds = 15;
+                break;
+        }
+        Debug.Log("Max Rounds " + maxRounds);
+    }
+
     private IEnumerator WaitRoundTextAndTransition()
     {
         isWaiting = true;
         yield return new WaitForSeconds(waitTimeBetweenRounds);
         TransitionRound();
         isWaiting = false;
+    }
+
+    // Derived from king pin project
+    private IEnumerator WaitForSoundAndTransition(string sceneName)
+    {
+        isVictory = true;
+        victorySound.Play();
+        Debug.Log("victorySoundPlay");
+        yield return new WaitForSeconds(victorySound.clip.length);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
 }

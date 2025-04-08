@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Number of waves:'
+  m_text: 'Number of waves: 10'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -354,7 +354,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2109320797}
         m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
-        m_MethodName: UpdateDifficultyText
+        m_MethodName: SetHard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -402,6 +402,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 151161804}
   m_CullTransparentMesh: 1
+--- !u!1001 &312034601
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2411790764230514125, guid: 559bf3282c1661d4fa876aca49bf5e90, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.399605
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411790764230514125, guid: 559bf3282c1661d4fa876aca49bf5e90, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -16.775896
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411790764230514125, guid: 559bf3282c1661d4fa876aca49bf5e90, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 54.838787
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411790764230514125, guid: 559bf3282c1661d4fa876aca49bf5e90, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9592018
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411790764230514125, guid: 559bf3282c1661d4fa876aca49bf5e90, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.28272226
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411790764230514125, guid: 559bf3282c1661d4fa876aca49bf5e90, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411790764230514125, guid: 559bf3282c1661d4fa876aca49bf5e90, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411790764230514125, guid: 559bf3282c1661d4fa876aca49bf5e90, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -32.846
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411790764230514125, guid: 559bf3282c1661d4fa876aca49bf5e90, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411790764230514125, guid: 559bf3282c1661d4fa876aca49bf5e90, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394367946668995729, guid: 559bf3282c1661d4fa876aca49bf5e90, type: 3}
+      propertyPath: m_Name
+      value: MainMenuMusic
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 559bf3282c1661d4fa876aca49bf5e90, type: 3}
 --- !u!1 &329196232
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,7 +798,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Number of waves:'
+  m_text: 'Number of waves: 5'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1014,7 +1071,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Number of waves:'
+  m_text: 'Number of waves: 15'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1192,7 +1249,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2109320797}
         m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
-        m_MethodName: UpdateDifficultyText
+        m_MethodName: SetMedium
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1633,7 +1690,7 @@ GameObject:
   - component: {fileID: 1406329785}
   - component: {fileID: 1406329787}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: DifficultyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1769,7 +1826,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7875a88b18b3449b186790adfebbd1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DifficultyLevel: 0
   difficultyText: {fileID: 1406329785}
 --- !u!1 &1629979485
 GameObject:
@@ -2281,7 +2337,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2109320797}
         m_TargetAssemblyTypeName: DifficultyManager, Assembly-CSharp
-        m_MethodName: UpdateDifficultyText
+        m_MethodName: SetEasy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2358,7 +2414,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7875a88b18b3449b186790adfebbd1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DifficultyLevel: 0
   difficultyText: {fileID: 1406329785}
 --- !u!4 &2109320798
 Transform:
@@ -2520,3 +2575,4 @@ SceneRoots:
   - {fileID: 1241058350}
   - {fileID: 1675425883}
   - {fileID: 2109320798}
+  - {fileID: 312034601}

@@ -9925,6 +9925,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6128470794128864019, guid: 614ae53ee917e4016a1405f846e8ba8c, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6459475210131114860, guid: 614ae53ee917e4016a1405f846e8ba8c, type: 3}
       propertyPath: m_Name
       value: GameEngine
@@ -9942,21 +9946,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1182104072}
     - target: {fileID: 7964254866546640077, guid: 614ae53ee917e4016a1405f846e8ba8c, type: 3}
-      propertyPath: waveManager
-      value: 
-      objectReference: {fileID: 1182104072}
-    - target: {fileID: 7964254866546640077, guid: 614ae53ee917e4016a1405f846e8ba8c, type: 3}
       propertyPath: collectionSpawner
       value: 
       objectReference: {fileID: 1600687221}
-    - target: {fileID: 7964254866546640077, guid: 614ae53ee917e4016a1405f846e8ba8c, type: 3}
-      propertyPath: passiveResourceRate
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964254866546640077, guid: 614ae53ee917e4016a1405f846e8ba8c, type: 3}
-      propertyPath: waitTimeBetweenRounds
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

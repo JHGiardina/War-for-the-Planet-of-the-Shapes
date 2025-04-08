@@ -7,8 +7,8 @@ public class DifficultyManager : MonoBehaviour
 {
 
     public static DifficultyManager instance;
+    public static Difficulty DifficultyLevel;
 
-    public Difficulty DifficultyLevel = Difficulty.Easy;
     public TextMeshProUGUI difficultyText;
 
     void Awake()
@@ -17,34 +17,38 @@ public class DifficultyManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            DifficultyManager.DifficultyLevel = Difficulty.Easy;
         }
     }
 
-    void Start()
+    private void Update()
     {
         UpdateDifficultyText();
-        ApplyDifficulty(DifficultyLevel);
     }
 
-    public void NewDifficultySelected(Difficulty diflvl)
+    public void SetEasy()
     {
-        DifficultyLevel = diflvl;
-        ApplyDifficulty(diflvl);
-        UpdateDifficultyText();
+        NewDifficultySelected(Difficulty.Easy);
+    }
+
+    public void SetMedium()
+    {
+        NewDifficultySelected(Difficulty.Medium);
+    }
+
+    public void SetHard()
+    {
+        NewDifficultySelected(Difficulty.Hard);
+    }
+
+    private void NewDifficultySelected(Difficulty diflvl)
+    {
+        DifficultyManager.DifficultyLevel = diflvl;
         Debug.Log("Difficulty selected: " + diflvl);
     }
 
-    public void ApplyDifficulty(Difficulty level)
+    private void UpdateDifficultyText()
     {
-        // game behavior here
-        Debug.Log("Applying difficulty: " + level);
-    }
-
-    public void UpdateDifficultyText()
-    {
-        if (difficultyText != null)
-        {
-            difficultyText.text = "Difficulty: " + DifficultyLevel.ToString();
-        }
+        difficultyText.text = "Difficulty: " + DifficultyManager.DifficultyLevel.ToString();
     }
 }
