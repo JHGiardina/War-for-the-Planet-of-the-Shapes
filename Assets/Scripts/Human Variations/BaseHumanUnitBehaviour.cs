@@ -28,7 +28,7 @@ public abstract class BaseHumanUnitBehaviour : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.SetDestination(Vector3.zero);
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         Collider = GetComponent<Collider>();
         healthBar = GetComponentInChildren<UnitHealthBar>();
         
