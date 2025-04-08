@@ -47,7 +47,7 @@ public abstract class BaseHumanUnitBehaviour : MonoBehaviour
     {
         if(animator == null)
         {
-            animator = GetComponent<Animator>();
+            animator = GetComponentInChildren<Animator>();
         }
     }
 
