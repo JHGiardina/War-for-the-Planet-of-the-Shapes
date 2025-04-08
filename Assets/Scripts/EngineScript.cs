@@ -17,7 +17,6 @@ public class EngineScript : MonoBehaviour
     [HideInInspector] public static int curHumanPop = 0;
     [HideInInspector] public static int waveNumber;
 
-    private float curPopInt = 0f;
     private bool isWaiting = false;
     private float timeLastPassiveResource;
     
