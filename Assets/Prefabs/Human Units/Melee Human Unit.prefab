@@ -1847,7 +1847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82b8d993d85aee74cadafb338003a255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  Health: 200
   DeathExplosion: {fileID: 6077638792615033397, guid: b4f1aff922dcf3c4f83269128af8fad0, type: 3}
   Collider: {fileID: 0}
   detectionRadius: 10
@@ -2196,7 +2196,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 61410025172382529, guid: ac4a449e9f4d400438d63f04647c6b5c, type: 3}
       propertyPath: MaxHealth
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4527789608170154564, guid: ac4a449e9f4d400438d63f04647c6b5c, type: 3}
       propertyPath: m_Pivot.x

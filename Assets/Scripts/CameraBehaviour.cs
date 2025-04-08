@@ -28,7 +28,7 @@ public class CameraBehavior : MonoBehaviour
         movementSpeed = 20;
         zoomSpeedMouse = 30;
         isTransitioning = false;
-        rotationSpeed= 1000;
+        rotationSpeed= 700;
 
         // Layer masks so we can spawn way points in resources
         resourceLayerMask = ~LayerMask.GetMask("Resource");
