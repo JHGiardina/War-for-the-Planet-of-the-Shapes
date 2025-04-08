@@ -23,6 +23,7 @@ public class EngineScript : MonoBehaviour
     
     void Start()
     {
+        MainMenuAudio.Audio.Stop();
         timeLastPassiveResource = Time.time;
         waveNumber = 0;
     }

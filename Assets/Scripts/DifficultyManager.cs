@@ -6,20 +6,16 @@ public enum Difficulty {Easy, Medium, Hard}
 public class DifficultyManager : MonoBehaviour
 {
 
-    public static DifficultyManager _instance;
-
-    public static DifficultyManager GetInstance()
-    {
-        return _instance;
-    }
+    public static DifficultyManager instance;
 
     public Difficulty DifficultyLevel = Difficulty.Easy;
     public TextMeshProUGUI difficultyText;
 
     void Awake()
     {
+        if(instance == null)
         {
-            _instance = this;
+            instance = this;
             DontDestroyOnLoad(gameObject);
         }
     }
