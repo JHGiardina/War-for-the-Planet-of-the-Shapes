@@ -118,7 +118,6 @@ public class PrismUnitBehaviour : MonoBehaviour
                 Destroy(explosionVfx, 1);
                 Destroy(gameObject);
             }
-            EngineScript.curPop -= 1;
         }
     }
 

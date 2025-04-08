@@ -25,16 +25,11 @@ public class EngineScript : MonoBehaviour
     void Update()
     {
         curHumanPop = CountHumans();
+        curPop = CountPrisms();
+
         if(curHumanPop <= 0 && isWaiting == false)
         {
             StartTransitionRound();
-        }
-        
-        curPopInt += Time.deltaTime;
-        if (curPopInt >= 5)
-        {
-            curPop = CountPrisms();
-            curPopInt = 0;
         }
     }
 
