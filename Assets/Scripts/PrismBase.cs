@@ -22,10 +22,9 @@ public class PrismBase : MonoBehaviour
     {
         if (prismBehavior.Health <= 0)
         {
-            Debug.Log("dead");
             if(!isDead)
             {
-                StartCoroutine(WaitForExplosionAndTransition("DefeatScene", 2));
+                StartCoroutine(WaitForExplosionAndTransition("DefeatScene", 1));
             }
         }
     }
