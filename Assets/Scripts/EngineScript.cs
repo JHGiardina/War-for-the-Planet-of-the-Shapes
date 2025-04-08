@@ -7,6 +7,7 @@ public class EngineScript : MonoBehaviour
     public TextMeshProUGUI RoundText;
     public WaveManager WaveManager;
     public CameraBehavior Camera;
+    public CollectionSpawning collectionSpawner; 
 
     public int waitTimeBetweenRounds = 2;
     public int passiveResourceAmount = 10;
@@ -69,6 +70,8 @@ public class EngineScript : MonoBehaviour
 
         Camera.ReturnCameraToPreviousPosition();
         WaveManager.SpawnWave();
+        collectionSpawner.ResetCollectors();
+
         
         RoundText.enabled = false;
 

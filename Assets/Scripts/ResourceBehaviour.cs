@@ -35,9 +35,7 @@ public class ResourceBehaviour : MonoBehaviour
             // Destroy used up Resources
             if(extractAmtLeft <= 0)
             {
-                var explosionVfx = Instantiate(DeathExplosion, transform.position, Quaternion.identity);
-                Destroy(explosionVfx, 1);
-                Destroy(gameObject);
+                Remove();
             }
             else
             {
@@ -53,12 +51,16 @@ public class ResourceBehaviour : MonoBehaviour
     {
         // Bruh why does c# perform integer division then cast it to float
         float alpha = (float) extractAmtLeft / TotalExtractAmt;
-        Debug.Log(extractAmtLeft);
-        Debug.Log(TotalExtractAmt);
-        Debug.Log("alpha " + alpha); 
 
         Color previousColor = material.color;
         material.color = new Color(previousColor.r, previousColor.g, previousColor.b, alpha);
+    }
+
+    public void Remove()
+    {
+        var explosionVfx = Instantiate(DeathExplosion, transform.position, Quaternion.identity);
+        Destroy(explosionVfx, 1);
+        Destroy(gameObject);
     }
 }
     
