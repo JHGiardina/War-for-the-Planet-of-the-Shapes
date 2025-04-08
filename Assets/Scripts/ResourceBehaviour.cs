@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class ResourceBehaviour : MonoBehaviour
 {
-    public int extractAmt = 10;
+    public int totalExtractAmt = 30;
+    public int extractAmt = 50;
     public float extractRate = 2;
 
     private float timeLastCollection;

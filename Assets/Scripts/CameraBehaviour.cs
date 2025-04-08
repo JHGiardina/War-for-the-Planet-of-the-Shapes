@@ -7,6 +7,7 @@ public class CameraBehavior : MonoBehaviour
     public GameObject WayPointObject;
     public Transform RoundTextCameraLocation;
     public float transitionTime = 2;
+    public int UnitSpawnCost = 5;
     [HideInInspector] public bool IsUserControllable;
     [HideInInspector] public bool isTransitioning;
 
@@ -48,6 +49,9 @@ public class CameraBehavior : MonoBehaviour
 
     private void SpawnAtRayHit()
     {
+        // If you can't afford the unit you can't spawn it
+        if(!(EngineScript.curCount - UnitSpawnCost >= 0)) return;
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
@@ -57,6 +61,9 @@ public class CameraBehavior : MonoBehaviour
                 Instantiate(SpawnUnit, spawnLocation, SpawnUnit.transform.rotation);
             }
         }
+
+        // That'll cost you resources ;)
+        EngineScript.curCount -= UnitSpawnCost;
     }
 
     private void HandlePosition()
