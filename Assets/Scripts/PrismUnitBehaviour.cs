@@ -21,7 +21,6 @@ public class PrismUnitBehaviour : MonoBehaviour
     private LineRenderer laser;
     private UnitHealthBar healthBar;
     private int layerMask;
-    private float curTime = 0f;
 
     private AudioSource laserSound;
     private AudioSource spawnSound;
@@ -130,8 +129,9 @@ public class PrismUnitBehaviour : MonoBehaviour
         laser.SetPosition(1, target);
     }
 
-    /*
-    private void OnTriggerStay(Collider other)
+
+    // Moved to ResourceBehaviour
+    /*private void OnTriggerStay(Collider other)
     {
         if(other.CompareTag("Collector"))
         {
