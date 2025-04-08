@@ -12,7 +12,7 @@ public class HumanTextBehaviour : MonoBehaviour
 
     public void Update()
     {
-        tmpGUI.text = "Units: " + EngineScript.curHumanPop.ToString();
+        tmpGUI.text = "Humans: " + EngineScript.curHumanPop.ToString();
     } 
 
 }

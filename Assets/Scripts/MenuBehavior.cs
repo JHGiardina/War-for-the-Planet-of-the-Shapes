@@ -27,14 +27,4 @@ public class MenuBehavior : MonoBehaviour
     {
         Application.Quit();
     }
-
-    /*
-    private IEnumerator WaitForSoundAndTransition(string sceneName)
-    {
-        AudioSource audioSource = GetComponentInChildren<AudioSource>();
-        audioSource.Play();
-        yield return new WaitForSeconds(audioSource.clip.length);
-        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
-    }
-    */
 }

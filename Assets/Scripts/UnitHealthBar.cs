@@ -5,6 +5,8 @@ public class UnitHealthBar : MonoBehaviour
 {
     public float MaxHealth;
     public float MinHealth;
+    public bool LookAtCamera = true;
+
     [HideInInspector] public float CurrentHealth;
     public Slider healthSlider;
     public Image fillImage;
@@ -17,11 +19,13 @@ public class UnitHealthBar : MonoBehaviour
 
     void Update()
     {
-        transform.LookAt(Camera.main.transform.position);
-
+        if(LookAtCamera)
+        {
+            transform.LookAt(Camera.main.transform.position);
+        }
+        
         float healthRatio = CurrentHealth / MaxHealth;
         healthSlider.value = healthRatio;
-        Debug.Log(healthRatio);
         fillImage.color = Color.Lerp(Color.red, Color.green, healthRatio);
     }
 }

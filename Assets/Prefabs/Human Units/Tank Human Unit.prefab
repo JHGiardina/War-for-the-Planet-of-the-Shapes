@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4922097457922357828}
   - component: {fileID: -5364171407766301759}
   m_Layer: 6
-  m_Name: Tank Guman Unit
+  m_Name: Tank Human Unit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,14 +202,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 500
-  MinApproachRadius: 15
   DeathExplosion: {fileID: 6077638792615033397, guid: b4f1aff922dcf3c4f83269128af8fad0, type: 3}
   Collider: {fileID: 0}
+  detectionRadius: 10
   AttackRange: 35
   AttackDamage: 100
   AttackCooldown: 3
   LaserVisibilityTime: 1
-  BaseSpeed: 1.5
+  BaseSpeed: 4
 --- !u!95 &4922097457922357828
 Animator:
   serializedVersion: 7

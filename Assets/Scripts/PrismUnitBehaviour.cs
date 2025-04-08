@@ -19,6 +19,7 @@ public class PrismUnitBehaviour : MonoBehaviour
     private float timeLastAttack;
     private float timeLastLaser;
     private LineRenderer laser;
+    private UnitHealthBar healthBar;
     private int layerMask;
     private float curTime = 0f;
 
@@ -30,6 +31,7 @@ public class PrismUnitBehaviour : MonoBehaviour
         Collider = GetComponent<Collider>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         laser = GetComponent<LineRenderer>();
+        healthBar = GetComponentInChildren<UnitHealthBar>();
         
         // Hard coded the order and amount of audio sources in prefab
         AudioSource[] audioSources = GetComponents<AudioSource>();
@@ -112,6 +114,8 @@ public class PrismUnitBehaviour : MonoBehaviour
     public void OnHit(float damage)
     {
         Health -= damage;
+        healthBar.CurrentHealth = Health;
+        
         if(Health <= 0)
         {
             if(DeathExplosion != null)
