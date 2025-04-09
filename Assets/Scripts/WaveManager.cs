@@ -8,7 +8,7 @@ public class WaveManager : MonoBehaviour
     public Transform[] SpawnPoints;
     public float TimeBetweenWaves = 5f;
     public int EnemiesPerWave = 5;
-    public int WaveNumber = 1;
+    public int WaveNumber = 0;
 
     // Probability a tanked is spawned is tankSpawnFactor / (tankSpawnFactor + rangedSpawnFact + meleeSpawnFactor)
     public int tankSpawnFactor = 1;
@@ -34,7 +34,11 @@ public class WaveManager : MonoBehaviour
     {
 
         WaveNumber += 1;
-        EnemiesPerWave = EnemiesPerWave * WaveNumber;
+        //float additionalEnemies = 0.15f * (WaveNumber * EnemiesPerWave);
+        //Debug.Log("Additional Units This Wave " + additionalEnemies);
+        int additionalEnemies = 3 * WaveNumber;
+        Debug.Log("Additional Units This Wave " + additionalEnemies);
+        EnemiesPerWave = EnemiesPerWave + additionalEnemies;
         for (int i = 0; i < EnemiesPerWave; i++)
         {
             SpawnEnemy();
