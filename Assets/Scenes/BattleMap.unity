@@ -3753,6 +3753,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6931604102822996923, guid: c93fcb52d9b37ba4fa403705edf9d5d4, type: 3}
+      propertyPath: WaveNumber
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931604102822996923, guid: c93fcb52d9b37ba4fa403705edf9d5d4, type: 3}
       propertyPath: EnemiesPerWave
       value: 6
       objectReference: {fileID: 0}
@@ -11317,7 +11321,7 @@ AudioSource:
   m_GameObject: {fileID: 1459212951}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5421272859405730381, guid: 063f4974f7008436abfe1f0487df1d34, type: 2}
   m_audioClip: {fileID: 8300000, guid: b958a8ac580214548a5470747812a4ca, type: 3}
   m_Resource: {fileID: 8300000, guid: b958a8ac580214548a5470747812a4ca, type: 3}
   m_PlayOnAwake: 1

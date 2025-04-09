@@ -123,8 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ccd5dc5c0dff564c88341a130979d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TotalExtractAmt: 60
-  ExtractAmt: 10
+  TotalExtractAmt: 30
+  ExtractAmt: 5
   ExtractRate: 1
   DeathExplosion: {fileID: 6077638792615033397, guid: 0a4866f90bc79464682ffcacaf5f4d4c, type: 3}
 --- !u!82 &5199480215515962222
@@ -136,7 +136,7 @@ AudioSource:
   m_GameObject: {fileID: 8973665682119063572}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7235533252524102754, guid: 063f4974f7008436abfe1f0487df1d34, type: 2}
   m_audioClip: {fileID: 8300000, guid: 69ccfbd78fdfbad42af34f5dde475263, type: 3}
   m_Resource: {fileID: 8300000, guid: 69ccfbd78fdfbad42af34f5dde475263, type: 3}
   m_PlayOnAwake: 0
