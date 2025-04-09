@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/DifficultySelect.unity
     guid: 516913d71e894483cab685a81c29f7b2
   - enabled: 1
+    path: Assets/Scenes/HowToPlay.unity
+    guid: 2557ea1b312dc44b9855a874728f268e
+  - enabled: 1
+    path: Assets/Scenes/CreditsScene.unity
+    guid: c2457b3533f80453b9f5dcb8843c821a
+  - enabled: 0
     path: Assets/Scenes/SettingsMenu.unity
     guid: 34040d200944d4a99a1a83a738c11fc7
   - enabled: 1

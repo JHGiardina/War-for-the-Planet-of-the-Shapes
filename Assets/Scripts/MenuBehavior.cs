@@ -26,6 +26,16 @@ public class MenuBehavior : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("DifficultySelect");
     }
 
+    public void GoToTutorial()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("HowToPlay");
+    }
+
+    public void GoToCredits()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("CreditsScene");
+    }
+
     public void ExitGame()
     {
         Application.Quit();
